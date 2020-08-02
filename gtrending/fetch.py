@@ -11,11 +11,11 @@ import requests
 
 
 def fetch_repos(
-    language: Optional[str] = "",
-    spoken_language_code: Optional[str] = "",
-    since: Optional[str] = "daily",
-):
-    url = "https://ghapi.huchen.dev/repositories?"
+    language: str = "",
+    spoken_language_code: str = "",
+    since: str = "daily",
+) -> dict:
+    url: str = "https://ghapi.huchen.dev/repositories?"
     url += "language=" + language
     url += "&since=" + since
     url += "&spoken_language_code=" + spoken_language_code
