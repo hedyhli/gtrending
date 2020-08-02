@@ -1,6 +1,6 @@
 test:
-	pytest --cov-report term-missing --cov=gtrending tests/ -vv
+	python3 -m pytest --cov-report term-missing --cov=gtrending tests/ -vv
 typecheck:
-	mypy -p gtrending --ignore-missing-imports --warn-unreachable
+	python3 -m mypy -p gtrending --ignore-missing-imports --warn-unreachable
 typecheck-report:
-	mypy -p gtrending --ignore-missing-imports --warn-unreachable --html-report mypy_report
+	python3 -m mypy -p gtrending --ignore-missing-imports --warn-unreachable --html-report mypy_report
