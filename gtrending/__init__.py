@@ -1,1 +1,1 @@
-from .fetch import fetch_repos
+from .fetch import fetch_repos, fetch_developers
