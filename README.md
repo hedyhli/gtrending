@@ -12,6 +12,19 @@ trending repositories and developers. Relies on
 which is in JavaScript, so gtrending aims to fill the gap
 for python.
 
+### Simple Demo
+
+```python
+from gtrending import fetch_repos
+
+repos = fetch_repos(language="python")
+for repo in repos:
+    print(repo["fullname"])
+```
+
+The above example will print all the trending Python projects
+on GitHub, trending today, and print their full names.
+
 ### Requirements
 * Python 3.6 or higher
 
@@ -20,3 +33,6 @@ for python.
 ```
 pip3 install gtrending
 ```
+
+### api
+Work in progess...
