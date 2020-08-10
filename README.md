@@ -36,5 +36,8 @@ on GitHub, trending today, and print their full names.
 pip3 install gtrending
 ```
 
-### api
-Work in progress...
+### API
+
+**`fetch_repos()`**
+
+Parameters
