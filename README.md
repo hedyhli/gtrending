@@ -21,7 +21,7 @@ from gtrending import fetch_repos
 repos = fetch_repos(language="python")  # get the result as a dict
 
 for repo in repos:
-    print(repo["fullname"])  # full name of each repo ("user/repo")
+    print(repo["name"])  # name of each repo
 ```
 
 The above example will print all the trending Python projects
