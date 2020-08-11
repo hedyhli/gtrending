@@ -17,9 +17,11 @@ for python.
 ```python
 from gtrending import fetch_repos
 
-repos = fetch_repos(language="python")
+
+repos = fetch_repos(language="python")  # get the result as a dict
+
 for repo in repos:
-    print(repo["fullname"])
+    print(repo["name"])  # name of each repo
 ```
 
 The above example will print all the trending Python projects
@@ -34,5 +36,8 @@ on GitHub, trending today, and print their full names.
 pip3 install gtrending
 ```
 
-### api
-Work in progess...
+### API
+
+**`fetch_repos()`**
+
+Parameters
