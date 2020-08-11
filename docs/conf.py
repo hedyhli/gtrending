@@ -32,8 +32,6 @@ release = '0.2.0'
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 
-extensions = []
-
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
 # This pattern also affects html_static_path and html_extra_path.
@@ -43,20 +41,16 @@ master_doc = 'index'
 
 # --- theme ---
 
-import guzzle_sphinx_theme
+import sphinx_rtd_theme
 
-html_theme_path = guzzle_sphinx_theme.html_theme_path()
 
 # Register the theme as an extension to generate a sitemap.xml
-extensions.append("guzzle_sphinx_theme")
+extensions = [
+    "sphinx_rtd_theme",
+]
 
-html_theme = 'guzzle_sphinx_theme'
+html_theme = 'sphinx_rtd_theme'
 
-# Guzzle theme options (see theme.conf for more information)
-html_theme_options = {
-    # Set the name of the project to appear in the sidebar
-    "project_nav_name": "gtrending",
-}
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
