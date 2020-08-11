@@ -40,4 +40,29 @@ pip3 install gtrending
 
 **`fetch_repos()`**
 
-Parameters
+Fetch trending repositories on GitHub
+
+Parameters:
+* `language (str, optional)`:  Filtering by language, eg: python
+* `spoken_language_code (str, optional)`: The spoken language, eg: en for english
+* `since (str, optional)`: The time range, choose from: [daily, weekly, monthly]. Defaults to "daily"
+
+Returns:
+> A list of dicts containing information for the trending repositories found
+
+
+<br>
+
+
+**`fetch_developers()`**
+
+Parameters:
+* `language (str, optional)`: The programming language, eg: python
+* `since (str, optional)`: The time range, choose from [daily, weekly, monthly]. Defaults to "daily"
+
+Returns:
+> A list of dicts containing information for the trending repositories found
+
+---
+
+If you liked this library, please give it a star, and maybe suggest more features!
