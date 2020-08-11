@@ -38,6 +38,8 @@ pip3 install gtrending
 
 ### API
 
+Documentation: [read the docs](https://gtrending.readthedocs.io/en/latest/)
+
 **`fetch_repos()`**
 
 > Fetch trending repositories on GitHub
