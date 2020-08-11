@@ -40,7 +40,7 @@ pip3 install gtrending
 
 **`fetch_repos()`**
 
-Fetch trending repositories on GitHub
+> Fetch trending repositories on GitHub
 
 Parameters:
 * `language (str, optional)`:  Filtering by language, eg: python
@@ -55,6 +55,8 @@ Returns:
 
 
 **`fetch_developers()`**
+
+> Fetch trending developers on GitHub
 
 Parameters:
 * `language (str, optional)`: The programming language, eg: python
