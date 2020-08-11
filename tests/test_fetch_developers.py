@@ -1,9 +1,8 @@
 from gtrending import fetch_developers
 
 
-def test_fetch_developers():
-    res = fetch_developers()
-    for developer in res:
+def basic_assertions(devs):
+    for developer in devs:
         assert isinstance(developer["username"], str)
         assert isinstance(developer["name"], str)
         # assert developer["type"] in ("organisation", "user")
@@ -18,3 +17,22 @@ def test_fetch_developers():
                 repo["url"]
                 == "https://github.com/" + developer["username"] + "/" + repo["name"]
             )
+
+
+def test_all():
+    res = fetch_developers()
+    basic_assertions(res)
+
+
+def test_language():
+    res = fetch_developers(language="python")
+    basic_assertions(res)
+    res = fetch_developers(language="javascript")
+    basic_assertions(res)
+
+
+def test_since():
+    res = fetch_developers(since="weekly")
+    basic_assertions(res)
+    res = fetch_developers(since="monthly")
+    basic_assertions(res)
