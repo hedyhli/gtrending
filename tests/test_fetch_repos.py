@@ -5,6 +5,7 @@ def basic_assertions(repos, language=""):
     for repo in repos:
         assert isinstance(repo["name"], str)
         assert isinstance(repo["author"], str)
+        assert repo["fullname"] == f"{repo['author']}/{repo['name']}"
         assert repo["stars"] >= 0
         assert repo["forks"] >= 0
         assert repo["url"] == f"https://github.com/{repo['author']}/{repo['name']}"

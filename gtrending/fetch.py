@@ -20,6 +20,8 @@ def fetch_repos(
     url += "&spoken_language_code=" + spoken_language_code
 
     res = requests.get(url).json()
+    for repo in res:
+        repo["fullname"] = f"{repo['author']}/{repo['name']}"
     return res
 
 
