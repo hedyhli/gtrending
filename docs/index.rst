@@ -48,8 +48,8 @@ Install gtrending by running:
 Contribute
 ----------
 
-- Issue Tracker: github.com/hedythedev/gtrending/issues
-- Source Code: github.com/hedythedev/gtrending
+- Issue Tracker: https://github.com/hedythedev/gtrending/issues
+- Source Code: https://github.com/hedythedev/gtrending
 
 Support
 -------
@@ -64,7 +64,7 @@ The project is licensed under the MIT license.
 
 
 Indices and tables
-==================
+------------------
 
 * :ref:`genindex`
 * :ref:`modindex`
