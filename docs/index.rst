@@ -10,7 +10,6 @@ Welcome to gtrending's documentation!
    :maxdepth: 2
    :caption: Contents:
 
----
 
 Lightweight and easy-to-use python library for fetching
 trending repositories and developers. Relies on
@@ -19,7 +18,8 @@ trending repositories and developers. Relies on
 which is in JavaScript, so gtrending aims to fill the gap
 for python.
 
-Look how easy it is to use:
+Simple example, fetching the trending python projects and
+display their full names::
 
     from gtrending import fetch_repos
 
@@ -41,7 +41,7 @@ Features
 Installation
 ------------
 
-Install gtrending by running:
+Install gtrending by running::
 
     pip install gtrending
 
@@ -54,7 +54,7 @@ Contribute
 Support
 -------
 
-If you are having issues, please raise an issue on github
+If you are having issues, please raise an issue on github.
 
 
 License
