@@ -2,6 +2,7 @@
 
 ![checks](https://github.com/hedythedev/gtrending/workflows/checks/badge.svg)
 [![codecov](https://codecov.io/gh/hedythedev/gtrending/branch/master/graph/badge.svg?token=J19AQKEO4W)](https://codecov.io/gh/hedythedev/gtrending)
+[![docs status](https://readthedocs.org/projects/gtrending/badge/?version=latest)](https://gtrending.readthedocs.io/en/latest/)
 [![pypi version](https://img.shields.io/pypi/v/gtrending)](https://pypi.org/project/gtrending/)
 [![Python Requirements](https://img.shields.io/pypi/pyversions/gtrending)](https://pypi.org/project/gtrending/)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
