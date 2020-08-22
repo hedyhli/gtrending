@@ -17,12 +17,12 @@
 
 # -- Project information -----------------------------------------------------
 
-project = 'gtrending'
-copyright = '2020, Hedy Li'
-author = 'Hedy Li'
+project = "gtrending"
+copyright = "2020, Hedy Li"
+author = "Hedy Li"
 
 # The full version, including alpha/beta/rc tags
-release = '0.3.0'
+release = "0.3.0"
 
 
 # -- General configuration ---------------------------------------------------
@@ -35,9 +35,9 @@ release = '0.3.0'
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
 # This pattern also affects html_static_path and html_extra_path.
-exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
+exclude_patterns = ["_build", "Thumbs.db", ".DS_Store"]
 
-master_doc = 'index'
+master_doc = "index"
 
 # --- theme ---
 
@@ -49,8 +49,8 @@ extensions = [
     "sphinx_rtd_theme",
 ]
 
-html_theme = 'sphinx_rtd_theme'
+html_theme = "sphinx_rtd_theme"
 
 
 # Add any paths that contain templates here, relative to this directory.
-templates_path = ['_templates']
+templates_path = ["_templates"]
