@@ -1,6 +1,6 @@
 # `gtrending`
 
-![Test and Lint](https://github.com/hedythedev/gtrending/workflows/Test%20and%20Lint/badge.svg)
+![checks](https://github.com/hedythedev/gtrending/workflows/checks/badge.svg)
 [![codecov](https://codecov.io/gh/hedythedev/gtrending/branch/master/graph/badge.svg?token=J19AQKEO4W)](https://codecov.io/gh/hedythedev/gtrending)
 [![pypi version](https://img.shields.io/pypi/v/gtrending)](https://pypi.org/project/gtrending/)
 [![Python Requirements](https://img.shields.io/pypi/pyversions/gtrending)](https://pypi.org/project/gtrending/)
