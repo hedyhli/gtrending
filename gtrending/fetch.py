@@ -11,15 +11,17 @@ import requests
 
 
 def fetch_repos(
-    language: str = "", spoken_language_code: str = "", since: str = "daily",
+    language: str = "",
+    spoken_language_code: str = "",
+    since: str = "daily",
 ) -> dict:
     """Fetch trending repositories on GitHub
-    
+
     Parameters:
         language (str, optional):  Filtering by language, eg: python
         spoken_language_code (str, optional): The spoken language, eg: en for english
         since (str, optional): The time range, choose from: [daily, weekly, monthly]. Defaults to "daily"
-    
+
     Returns:
         A list of dicts containing information for the trending repositories found
     """
@@ -36,11 +38,11 @@ def fetch_repos(
 
 def fetch_developers(language: str = "", since: str = "daily") -> dict:
     """Fetch trending developers on GitHub
-    
+
     Parameters:
         language (str, optional): The programming language, eg: python
         since (str, optional): The time range, choose from [daily, weekly, monthly]. Defaults to "daily"
-    
+
     Returns:
         A list of dicts containing information for the trending developers found
     """
@@ -50,3 +52,26 @@ def fetch_developers(language: str = "", since: str = "daily") -> dict:
 
     res = requests.get(url).json()
     return res
+
+
+def languages_list() -> list:
+    """Fetch languages
+
+    Returns:
+        A list of dictionaries containing languages
+
+    """
+    url: str = "https://ghapi.huchen.dev/languages"
+    response = requests.get(url).json()
+    return response
+
+
+def spoken_languages_list() -> list:
+    """Fetch spoken languages.
+
+    Returns:
+        A list of spoken languages
+    """
+    url: str = "https://ghapi.huchen.dev/spoken_languages"
+    response = requests.get(url).json()
+    return response
