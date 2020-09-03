@@ -25,6 +25,16 @@ def fetch_repos(
     Returns:
         A list of dicts containing information for the trending repositories found
     """
+
+    if language and not check_language(language):
+        raise ValueError("Language value does not exist.")
+
+    if spoken_language_code and not check_spoken_language(spoken_language_code):
+        raise ValueError("Spoken language value does not exist.")
+
+    if since and not check_since(since):
+        raise ValueError("Since value is not correct.")
+
     url: str = "https://ghapi.huchen.dev/repositories?"
     url += "language=" + language
     url += "&since=" + since
@@ -46,6 +56,13 @@ def fetch_developers(language: str = "", since: str = "daily") -> dict:
     Returns:
         A list of dicts containing information for the trending developers found
     """
+
+    if language and not check_language(language):
+        raise ValueError("Language value does not exist.")
+
+    if since and not check_since(since):
+        raise ValueError("Since value is not correct.")
+
     url: str = "https://ghapi.huchen.dev/developers?"
     url += "language=" + language
     url += "&since" + since
@@ -75,3 +92,58 @@ def spoken_languages_list() -> list:
     url: str = "https://ghapi.huchen.dev/spoken_languages"
     response = requests.get(url).json()
     return response
+
+
+def check_language(language: str = "") -> bool:
+    """Check if the language exists.
+
+    Parameters:
+        language (str):  The language, eg: python.
+
+    Returns:
+        A bool value. True for success, False otherwise.
+    """
+    languages = languages_list()
+    language = language.lower()
+
+    for name in languages:
+        if language == name["name"].lower():
+            return True
+    
+    return False
+
+
+def check_spoken_language(spoken_language_code: str = "") -> bool:
+    """Check if the spoken language exists.
+
+    Parameters:
+        spoken_language_code (str): The spoken language, eg: en for english.
+
+    Returns:
+        A bool value. True for success, False otherwise.
+    """
+    spoken_languages = spoken_languages_list()
+    spoken_language_code = spoken_language_code.lower()
+
+    for name in spoken_languages:
+        if spoken_language_code == name["urlParam"].lower():
+            return True
+    
+    return False
+
+
+def check_since(since: str = "") -> bool:
+    """Check if the time range value is correct.
+
+    Parameters:
+        since (str): The time range.
+
+    Returns:
+        A bool value. True for success, False otherwise.
+    """
+    since = since.lower()
+
+    if since in ["daily", "weekly", "monthly"]:
+        return True
+
+    return False
