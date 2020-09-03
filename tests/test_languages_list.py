@@ -9,6 +9,7 @@ def assertions(response):
             assert isinstance(key, str)
             assert isinstance(i[key], str)
 
+
 def test_language_list():
     response = languages_list()
     assertions(response)
