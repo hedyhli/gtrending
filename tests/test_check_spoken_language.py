@@ -7,9 +7,9 @@ def assertions(response, expected):
 
 
 def test_check_language():
-    response = check_spoken_language("en", True)
-    assertions(response)
-    response = check_spoken_language("es", True)
-    assertions(response)
-    response = check_spoken_language("notreal", False)
-    assertions(response)
+    response = check_spoken_language("en")
+    assertions(response, True)
+    response = check_spoken_language("es")
+    assertions(response, True)
+    response = check_spoken_language("notreal")
+    assertions(response, False)

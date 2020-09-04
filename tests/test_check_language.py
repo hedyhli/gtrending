@@ -7,9 +7,9 @@ def assertions(response, expected):
 
 
 def test_check_language():
-    response = check_language("python", True)
-    assertions(response)
-    response = check_language("javascript", True)
-    assertions(response)
-    response = check_language("false_language", False)
-    assertions(response)
+    response = check_language("python")
+    assertions(response, True)
+    response = check_language("javascript")
+    assertions(response, True)
+    response = check_language("false_language")
+    assertions(response, False)
