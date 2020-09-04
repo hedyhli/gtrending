@@ -17,7 +17,7 @@ def basic_assertions(repos, language=""):
         if language:
             assert repo["language"].lower() == language
         if "languageColor" in str(repo.keys()):
-            assert len(repo["languageColor"]) == 7
+            assert len(repo["languageColor"]) in [4, 7]
             assert repo["languageColor"].startswith("#")
 
 
