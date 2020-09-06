@@ -101,7 +101,7 @@ def check_language(language: str = "") -> bool:
         language (str):  The language, eg: python.
 
     Returns:
-        A bool value. True for success, False otherwise.
+        A boolean value. True for valid language, False otherwise.
     """
     languages = languages_list()
     language = language.lower()
@@ -120,7 +120,7 @@ def check_spoken_language(spoken_language_code: str = "") -> bool:
         spoken_language_code (str): The spoken language, eg: en for english.
 
     Returns:
-        A bool value. True for success, False otherwise.
+        A boolean value. True for valid spoken language, False otherwise.
     """
     spoken_languages = spoken_languages_list()
     spoken_language_code = spoken_language_code.lower()
@@ -139,11 +139,6 @@ def check_since(since: str = "") -> bool:
         since (str): The time range.
 
     Returns:
-        A bool value. True for success, False otherwise.
+        A boolean value. True for valid parameter, False otherwise.
     """
-    since = since.lower()
-
-    if since in ["daily", "weekly", "monthly"]:
-        return True
-
-    return False
+    return since.lower() in ["daily", "weekly", "monthly"]
