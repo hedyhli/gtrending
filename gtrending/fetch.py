@@ -109,7 +109,7 @@ def check_language(language: str = "") -> bool:
     for name in languages:
         if language == name["name"].lower():
             return True
-    
+
     return False
 
 
@@ -128,7 +128,7 @@ def check_spoken_language(spoken_language_code: str = "") -> bool:
     for name in spoken_languages:
         if spoken_language_code == name["urlParam"].lower():
             return True
-    
+
     return False
 
 

@@ -1,1 +1,9 @@
-from .fetch import fetch_repos, fetch_developers, languages_list, spoken_languages_list, check_language, check_spoken_language, check_since
+from .fetch import (
+    fetch_repos,
+    fetch_developers,
+    languages_list,
+    spoken_languages_list,
+    check_language,
+    check_spoken_language,
+    check_since,
+)
