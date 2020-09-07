@@ -1,4 +1,5 @@
 from gtrending import fetch_repos
+import pytest
 
 
 def basic_assertions(repos, language=""):
@@ -17,7 +18,7 @@ def basic_assertions(repos, language=""):
         if language:
             assert repo["language"].lower() == language
         if "languageColor" in str(repo.keys()):
-            assert len(repo["languageColor"]) == 7
+            assert len(repo["languageColor"]) in [4, 7]
             assert repo["languageColor"].startswith("#")
 
 
@@ -31,3 +32,15 @@ def test_language():
     basic_assertions(res, "python")
     res = fetch_repos(language="javascript")
     basic_assertions(res, "javascript")
+
+
+def test_incorrect_values():
+    with pytest.raises(ValueError) as excinfo:
+        fetch_repos("false_language")
+    excinfo.match("Language value does not exist.")
+    with pytest.raises(ValueError) as excinfo:
+        fetch_repos("python", "false")
+    excinfo.match("Spoken language value does not exist.")
+    with pytest.raises(ValueError) as excinfo:
+        fetch_repos("python", "en", "annually")
+    excinfo.match("Since value is not correct.")

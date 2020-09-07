@@ -1,4 +1,5 @@
 from gtrending import fetch_developers
+import pytest
 
 
 def basic_assertions(devs):
@@ -36,3 +37,12 @@ def test_since():
     basic_assertions(res)
     res = fetch_developers(since="monthly")
     basic_assertions(res)
+
+
+def test_incorrect_values():
+    with pytest.raises(ValueError) as excinfo:
+        fetch_developers("false_language")
+    excinfo.match("Language value does not exist.")
+    with pytest.raises(ValueError) as excinfo:
+        fetch_developers("python", "annually")
+    excinfo.match("Since value is not correct.")
