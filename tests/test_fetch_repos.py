@@ -35,12 +35,9 @@ def test_language():
 
 
 def test_incorrect_values():
-    with pytest.raises(ValueError) as excinfo:
+    with pytest.raises(ValueError):
         fetch_repos("false_language")
-    excinfo.match("Language value does not exist.")
-    with pytest.raises(ValueError) as excinfo:
+    with pytest.raises(ValueError):
         fetch_repos("python", "false")
-    excinfo.match("Spoken language value does not exist.")
-    with pytest.raises(ValueError) as excinfo:
+    with pytest.raises(ValueError):
         fetch_repos("python", "en", "annually")
-    excinfo.match("Since value is not correct.")

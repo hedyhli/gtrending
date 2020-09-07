@@ -27,13 +27,13 @@ def fetch_repos(
     """
 
     if language and not check_language(language):
-        raise ValueError("Language value does not exist.")
+        raise ValueError("Invalid language argument: " + language)
 
     if spoken_language_code and not check_spoken_language(spoken_language_code):
-        raise ValueError("Spoken language value does not exist.")
+        raise ValueError("Invalid spoken_language_code argument: " + spoken_language_code)
 
     if since and not check_since(since):
-        raise ValueError("Since value is not correct.")
+        raise ValueError("Invalid since argument (must be 'daily', 'weekly' or 'monthly'): " + since)
 
     url: str = "https://ghapi.huchen.dev/repositories?"
     url += "language=" + language
