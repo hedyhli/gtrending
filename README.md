@@ -41,7 +41,7 @@ pip3 install gtrending
 
 Documentation: [read the docs](https://gtrending.readthedocs.io/en/latest/)
 
-**`fetch_repos()`**
+#### `fetch_repos()`
 
 > Fetch trending repositories on GitHub
 
@@ -56,8 +56,7 @@ Returns:
 
 <br>
 
-
-**`fetch_developers()`**
+#### `fetch_developers()`
 
 > Fetch trending developers on GitHub
 
@@ -67,6 +66,61 @@ Parameters:
 
 Returns:
 > A list of dicts containing information for the trending repositories found
+
+<br>
+
+#### `languages_list()`
+
+> Fetch languages
+
+Returns:
+> A list of dictionaries containing languages
+
+<br>
+
+#### `spoken_languages_list()`
+
+> Fetch spoken languages
+
+Returns:
+> A list of spoken languages
+
+<br>
+
+#### `check_language()`
+
+> Check if the language exists
+
+Parameters:
+* `language (str)`:  The language, eg: python.
+
+Returns:
+> A boolean value. True for valid language, False otherwise.
+
+<br>
+
+#### `check_spoken_language()`
+
+> Check if the spoken language exists
+
+Parameters:
+* `spoken_language_code (str)`: The spoken language, eg: en for english.
+
+Returns:
+> A boolean value. True for valid spoken language, False otherwise.
+
+<br>
+
+#### `check_since()`
+
+> Check if the time range is correct
+
+Parameters:
+* `since (str)`:  The time range
+
+Returns:
+> A boolean value. True for valid parameter, False otherwise.
+
 
 ---
 
