@@ -1,5 +1,5 @@
-from gtrending import fetch_repos
 import pytest
+from gtrending import fetch_repos
 
 
 def basic_assertions(repos, language=""):
