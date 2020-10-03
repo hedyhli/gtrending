@@ -1,6 +1,7 @@
 import argparse
 import pprint
 
+from gtrending import __version__
 from gtrending.fetch import fetch_developers, fetch_repos
 
 
@@ -18,6 +19,11 @@ def main():
     )
     subparser_dev.add_argument("language")
 
+    parser.add_argument(
+        "--version",
+        action="version",
+        version="%(prog)s {version}".format(version=__version__),
+    )
     args = parser.parse_args()
 
     if subparser_repo:
@@ -26,7 +32,3 @@ def main():
     if subparser_dev:
         developers = fetch_developers(args.language)
         pprint.pprint(developers)
-
-
-if __name__ == "__main__":
-    main()

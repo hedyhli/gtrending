@@ -1,9 +1,11 @@
 from .fetch import (
-    fetch_repos,
+    check_language,
+    check_since,
+    check_spoken_language,
     fetch_developers,
+    fetch_repos,
     languages_list,
     spoken_languages_list,
-    check_language,
-    check_spoken_language,
-    check_since,
 )
+
+__version__ = "0.3.0"
