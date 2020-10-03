@@ -20,6 +20,7 @@ def main():
     subparser_dev.add_argument("language")
 
     parser.add_argument(
+        "-V",
         "--version",
         action="version",
         version="%(prog)s {version}".format(version=__version__),
