@@ -14,12 +14,13 @@ def basic_assertions(repos, language=""):
         assert repo["currentPeriodStars"] >= 0
         if "language" in str(repo.keys()):
             print(repo["language"])
-            assert isinstance(repo["language"], str)
+            assert isinstance(repo["language"], str) or repo["language"] is None
         if language:
             assert repo["language"].lower() == language
         if "languageColor" in str(repo.keys()):
-            assert len(repo["languageColor"]) in [4, 7]
-            assert repo["languageColor"].startswith("#")
+            if repo["languageColor"]:  # It could be None if repo language is None
+                assert len(repo["languageColor"]) in [4, 7]
+                assert repo["languageColor"].startswith("#")
 
 
 def test_all():
