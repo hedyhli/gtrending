@@ -39,7 +39,7 @@ def fetch_repos(
             "Invalid since argument (must be 'daily', 'weekly' or 'monthly'): " + since
         )
 
-    url: str = "https://ghapi.huchen.dev/repositories?"
+    url: str = "https://gtrend.yapie.me/repositories?"
     url += "language=" + language
     url += "&since=" + since
     url += "&spoken_language_code=" + spoken_language_code
@@ -67,7 +67,7 @@ def fetch_developers(language: str = "", since: str = "daily") -> dict:
     if since and not check_since(since):
         raise ValueError("Since value is not correct.")
 
-    url: str = "https://ghapi.huchen.dev/developers?"
+    url: str = "https://gtrend.yapie.me/developers?"
     url += "language=" + language
     url += "&since" + since
 
@@ -82,7 +82,7 @@ def languages_list() -> list:
         A list of dictionaries containing languages
 
     """
-    url: str = "https://ghapi.huchen.dev/languages"
+    url: str = "https://gtrend.yapie.me/languages"
     response = requests.get(url).json()
     return response
 
@@ -93,7 +93,7 @@ def spoken_languages_list() -> list:
     Returns:
         A list of spoken languages
     """
-    url: str = "https://ghapi.huchen.dev/spoken_languages"
+    url: str = "https://gtrend.yapie.me/spoken_languages"
     response = requests.get(url).json()
     return response
 
