@@ -10,14 +10,14 @@ def basic_assertions(repos, language=""):
         assert repo["stars"] >= 0
         assert repo["forks"] >= 0
         assert repo["url"] == f"https://github.com/{repo['author']}/{repo['name']}"
-        assert isinstance(repo["description"], str)
+        assert isinstance(repo["description"], (str, type(None)))
         assert repo["currentPeriodStars"] >= 0
-        if "language" in str(repo.keys()):
-            print(repo["language"])
-            assert isinstance(repo["language"], str) or repo["language"] is None
-        if language:
-            assert repo["language"].lower() == language
-        if "languageColor" in str(repo.keys()):
+        print(repo.get("langauge"))
+        assert isinstance(repo.get("language"), (str, type(None)))
+        if language and repo.get("language"):
+            # Sometimes language is None even with langauge filtering
+            assert str(repo.get("language")).lower() == language
+        if "languageColor" in repo:
             if repo["languageColor"]:  # It could be None if repo language is None
                 assert len(repo["languageColor"]) in [4, 7]
                 assert repo["languageColor"].startswith("#")
