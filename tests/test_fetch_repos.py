@@ -12,10 +12,10 @@ def basic_assertions(repos, language=""):
         assert repo["url"] == f"https://github.com/{repo['author']}/{repo['name']}"
         assert isinstance(repo["description"], (str, type(None)))
         assert repo["currentPeriodStars"] >= 0
-        print(repo.get("langauge"))
+        print(repo.get("language"))
         assert isinstance(repo.get("language"), (str, type(None)))
         if language and repo.get("language"):
-            # Sometimes language is None even with langauge filtering
+            # Sometimes language is None even with language filtering
             assert str(repo.get("language")).lower() == language
         if "languageColor" in repo:
             if repo["languageColor"]:  # It could be None if repo language is None
