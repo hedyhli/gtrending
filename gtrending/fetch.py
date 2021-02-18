@@ -11,7 +11,9 @@ import requests
 
 
 def fetch_repos(
-    language: str = "", spoken_language_code: str = "", since: str = "daily",
+    language: str = "",
+    spoken_language_code: str = "",
+    since: str = "daily",
 ) -> dict:
     """Fetch trending repositories on GitHub
 
