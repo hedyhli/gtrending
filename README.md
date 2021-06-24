@@ -13,7 +13,6 @@ trending repositories and developers. Relies on
 which is in JavaScript, so gtrending aims to fill the gap
 for python.
 
-### Simple Demo
 
 ```python
 from gtrending import fetch_repos
@@ -28,20 +27,21 @@ for repo in repos:
 The above example will print all the trending Python projects
 on GitHub, trending today, and print their full names.
 
-### Requirements
+
+## Requirements
 * Python 3.6 or higher
 
 
-### Installation
+## Installation
 ```
 pip3 install gtrending
 ```
 
-### API
+## API
 
 Documentation: [read the docs](https://gtrending.readthedocs.io/en/latest/)
 
-#### `fetch_repos()`
+### `fetch_repos()`
 
 > Fetch trending repositories on GitHub
 
@@ -56,7 +56,7 @@ Returns:
 
 <br>
 
-#### `fetch_developers()`
+### `fetch_developers()`
 
 > Fetch trending developers on GitHub
 
@@ -69,7 +69,7 @@ Returns:
 
 <br>
 
-#### `languages_list()`
+### `languages_list()`
 
 > Fetch languages
 
@@ -78,7 +78,7 @@ Returns:
 
 <br>
 
-#### `spoken_languages_list()`
+### `spoken_languages_list()`
 
 > Fetch spoken languages
 
@@ -87,7 +87,7 @@ Returns:
 
 <br>
 
-#### `check_language()`
+### `check_language()`
 
 > Check if the language exists
 
@@ -99,7 +99,7 @@ Returns:
 
 <br>
 
-#### `check_spoken_language()`
+### `check_spoken_language()`
 
 > Check if the spoken language exists
 
@@ -111,7 +111,7 @@ Returns:
 
 <br>
 
-#### `check_since()`
+### `check_since()`
 
 > Check if the time range is correct
 
@@ -120,8 +120,3 @@ Parameters:
 
 Returns:
 > A boolean value. True for valid parameter, False otherwise.
-
-
----
-
-If you liked this library, please give it a star, and maybe suggest more features!
