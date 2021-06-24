@@ -24,8 +24,8 @@ for repo in repos:
     print(repo["fullname"])  # full name (user/repo) of each repo
 ```
 
-The above example will print all the trending Python projects
-on GitHub, trending today, and print their full names.
+The above example will fetch all the trending Python projects
+on GitHub trending today and print their full names.
 
 
 ## Requirements
