@@ -31,11 +31,13 @@ def fetch_repos(
 
     if spoken_language_code and not check_spoken_language(spoken_language_code):
         raise ValueError(
-            f"Invalid spoken_language_code argument: {spoken_language_code}")
+            f"Invalid spoken_language_code argument: {spoken_language_code}"
+        )
 
     if since and not check_since(since):
         raise ValueError(
-            f"Invalid since argument (must be 'daily', 'weekly' or 'monthly'): {since}")
+            f"Invalid since argument (must be 'daily', 'weekly' or 'monthly'): {since}"
+        )
 
     url: str = f"https://gtrend.yapie.me/repositories?language={language}&since{since}&spoken_language_code={spoken_language_code}"
 
