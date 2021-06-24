@@ -27,22 +27,17 @@ def fetch_repos(
     """
 
     if language and not check_language(language):
-        raise ValueError("Invalid language argument: " + language)
+        raise ValueError(f"Invalid language argument: {language}")
 
     if spoken_language_code and not check_spoken_language(spoken_language_code):
         raise ValueError(
-            "Invalid spoken_language_code argument: " + spoken_language_code
-        )
+            f"Invalid spoken_language_code argument: {spoken_language_code}")
 
     if since and not check_since(since):
         raise ValueError(
-            "Invalid since argument (must be 'daily', 'weekly' or 'monthly'): " + since
-        )
+            f"Invalid since argument (must be 'daily', 'weekly' or 'monthly'): {since}")
 
-    url: str = "https://gtrend.yapie.me/repositories?"
-    url += "language=" + language
-    url += "&since=" + since
-    url += "&spoken_language_code=" + spoken_language_code
+    url: str = f"https://gtrend.yapie.me/repositories?language={language}&since{since}&spoken_language_code={spoken_language_code}"
 
     res = requests.get(url).json()
     for repo in res:
@@ -67,9 +62,7 @@ def fetch_developers(language: str = "", since: str = "daily") -> dict:
     if since and not check_since(since):
         raise ValueError("Since value is not correct.")
 
-    url: str = "https://gtrend.yapie.me/developers?"
-    url += "language=" + language
-    url += "&since" + since
+    url: str = f"https://gtrend.yapie.me/developers?language={language}&since{since}"
 
     res = requests.get(url).json()
     return res
