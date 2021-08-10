@@ -43,18 +43,18 @@ Installation
 
 Install gtrending by running::
 
-    pip install gtrending
+    pip3 install gtrending
 
 Contribute
 ----------
 
-- Issue Tracker: https://github.com/hedythedev/gtrending/issues
-- Source Code: https://github.com/hedythedev/gtrending
+- Issue Tracker: https://github.com/hedyhli/gtrending/issues
+- Source Code: https://github.com/hedyhli/gtrending
 
 Support
 -------
 
-If you are having issues, please raise an issue on github.
+If you are having issues, please open an issue on the github issue tracker
 
 
 License
@@ -69,3 +69,11 @@ Indices and tables
 * :ref:`genindex`
 * :ref:`modindex`
 * :ref:`search`
+
+.. toctree::
+   :hidden:
+
+   self
+.. toctree::
+
+   fetch

@@ -4,10 +4,12 @@ import io
 
 from setuptools import setup
 
+from gtrending import __version__
+
 with io.open("README.md", "rt", encoding="utf8") as f:
     LONG_DESC = f.read()
 
-VERSION = "0.3.2"
+VERSION = __version__
 
 # This call to setup() does all the work
 setup(

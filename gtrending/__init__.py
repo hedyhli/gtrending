@@ -7,3 +7,5 @@ from .fetch import (
     check_spoken_language,
     check_since,
 )
+
+__version__ = '0.3.3'
