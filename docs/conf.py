@@ -24,6 +24,7 @@ author = "Hedy Li"
 
 # The full version, including alpha/beta/rc tags
 from gtrending import __version__
+
 release = __version__
 
 
