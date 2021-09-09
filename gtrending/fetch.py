@@ -42,9 +42,15 @@ def fetch_repos(
     url: str = f"https://gtrend.yapie.me/repositories?language={language}&since={since}&spoken_language_code={spoken_language_code}"
 
     res = requests.get(url).json()
+    repos = []
     for repo in res:
         repo["fullname"] = f"{repo['author']}/{repo['name']}"
-    return res
+        repo_language = repo.get("language")
+        if language:
+            if not repo_language or repo_language.lower() != language.lower():
+                continue
+        repos.append(repo)
+    return repos
 
 
 def fetch_developers(language: str = "", since: str = "daily") -> dict:
