@@ -5,7 +5,7 @@ Made by Hedy Li,
 Code on GitHub
 """
 
-from typing import Optional
+from typing import Optional, List
 
 import requests
 
@@ -14,7 +14,7 @@ def fetch_repos(
     language: str = "",
     spoken_language_code: str = "",
     since: str = "daily",
-) -> dict:
+) -> List[dict]:
     """Fetch trending repositories on GitHub
 
     Parameters:
