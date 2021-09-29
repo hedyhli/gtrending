@@ -20,6 +20,7 @@ setup(
     long_description_content_type="text/markdown",
     python_requires=">=3.6",
     url="https://github.com/hedythedev/gtrending",
+    scripts=['bin/fetch-repos'],
     author="Hedy Li",
     author_email="hedyhyry@gmail.com",
     license="MIT",
