@@ -51,7 +51,7 @@ Parameters:
 * `since (str, optional)`: The time range, choose from: [daily, weekly, monthly]. Defaults to "daily"
 
 Returns:
-> A list of dicts containing information for the trending repositories found
+> A list of dictionaries containing information for the trending repositories found
 
 
 <br>
@@ -65,7 +65,7 @@ Parameters:
 * `since (str, optional)`: The time range, choose from [daily, weekly, monthly]. Defaults to "daily"
 
 Returns:
-> A list of dicts containing information for the trending repositories found
+> A list of dictionaries containing information for the trending developers found
 
 <br>
 
