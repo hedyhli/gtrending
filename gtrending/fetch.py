@@ -15,7 +15,7 @@ def fetch_repos(
     spoken_language_code: str = "",
     since: str = "daily",
 ) -> List[dict]:
-    """Fetch trending repositories on GitHub
+    """Fetch trending repositories on GitHub.
 
     Parameters:
         language (str, optional):  Filtering by language, eg: python
@@ -23,7 +23,7 @@ def fetch_repos(
         since (str, optional): The time range, choose from: [daily, weekly, monthly]. Defaults to "daily"
 
     Returns:
-        A list of dicts containing information for the trending repositories found
+        A list of dictionary containing information for the trending repositories found.
     """
 
     if language and not check_language(language):
@@ -54,14 +54,14 @@ def fetch_repos(
 
 
 def fetch_developers(language: str = "", since: str = "daily") -> dict:
-    """Fetch trending developers on GitHub
+    """Fetch the trending developers on GitHub.
 
     Parameters:
         language (str, optional): The programming language, eg: python
         since (str, optional): The time range, choose from [daily, weekly, monthly]. Defaults to "daily"
 
     Returns:
-        A list of dicts containing information for the trending developers found
+        A list of dictionary containing information for the trending developers found.
     """
 
     if language and not check_language(language):
@@ -77,10 +77,10 @@ def fetch_developers(language: str = "", since: str = "daily") -> dict:
 
 
 def languages_list() -> list:
-    """Fetch languages
+    """Fetch programming languages.
 
     Returns:
-        A list of dictionaries containing languages
+        A list of dictionaries containing languages.
 
     """
     url: str = "https://gtrend.yapie.me/languages"
@@ -92,7 +92,7 @@ def spoken_languages_list() -> list:
     """Fetch spoken languages.
 
     Returns:
-        A list of spoken languages
+        A list of spoken languages.
     """
     url: str = "https://gtrend.yapie.me/spoken_languages"
     response = requests.get(url).json()
