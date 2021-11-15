@@ -54,7 +54,7 @@ def fetch_repos(
 
 
 def fetch_developers(language: str = "", since: str = "daily") -> dict:
-    """Fetch the trending developers on GitHub.
+    """Fetch trending developers on GitHub.
 
     Parameters:
         language (str, optional): The programming language, eg: python
