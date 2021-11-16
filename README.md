@@ -74,7 +74,7 @@ Returns:
 > Fetch languages
 
 Returns:
-> A list of dictionaries containing languages.
+> A list of dictionaries containing programming languages.
 
 <br>
 
