@@ -118,22 +118,25 @@ def check_language(language: str = "") -> bool:
     return False
 
 
-def check_spoken_language(spoken_language_code: str = "") -> bool:
+def check_spoken_language(spoken_language: str = "") -> bool:
     """Check if the spoken language exists.
 
     Parameters:
-        spoken_language_code (str): The spoken language, eg: en for english.
+        spoken_language (str): The spoken language, eg: English, or en, for English.
 
     Returns:
         A boolean value. True for valid spoken language, False otherwise.
     """
-    spoken_languages = spoken_languages_list()
-    spoken_language_code = spoken_language_code.lower()
-
-    for name in spoken_languages:
-        if spoken_language_code == name["urlParam"].lower():
-            return True
-
+    spoken_language = spoken_language.lower()
+    spoken_languages = []
+    spoken_language_codes = []
+    for entry in spoken_languages_list():
+        spoken_languages.extend(entry.get("name").split(", "))
+        spoken_language_codes.append(entry.get("urlParam"))
+    if spoken_language.title() in spoken_languages:
+        return True
+    if spoken_language in spoken_language_codes:
+        return True
     return False
 
 
