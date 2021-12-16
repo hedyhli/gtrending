@@ -1,7 +1,7 @@
 # `gtrending`
 
-![checks](https://github.com/hedythedev/gtrending/workflows/checks/badge.svg)
-[![codecov](https://codecov.io/gh/hedythedev/gtrending/branch/master/graph/badge.svg?token=J19AQKEO4W)](https://codecov.io/gh/hedythedev/gtrending)
+![checks](https://github.com/hedyhli/gtrending/workflows/checks/badge.svg)
+[![codecov](https://codecov.io/gh/hedyhli/gtrending/branch/master/graph/badge.svg?token=J19AQKEO4W)](https://codecov.io/gh/hedyhli/gtrending)
 [![docs status](https://readthedocs.org/projects/gtrending/badge/?version=latest)](https://gtrending.readthedocs.io/en/latest/)
 [![pypi version](https://img.shields.io/pypi/v/gtrending)](https://pypi.org/project/gtrending/)
 [![Python Requirements](https://img.shields.io/pypi/pyversions/gtrending)](https://pypi.org/project/gtrending/)
@@ -39,7 +39,7 @@ pip3 install gtrending
 
 ## API
 
-Documentation: [read the docs](https://gtrending.readthedocs.io/en/latest/)
+Documentation: [Read the docs](https://gtrending.readthedocs.io/en/latest/)
 
 ### `fetch_repos()`
 
