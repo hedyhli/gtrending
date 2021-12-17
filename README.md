@@ -1,7 +1,7 @@
 # `gtrending`
 
-![checks](https://github.com/hedythedev/gtrending/workflows/checks/badge.svg)
-[![codecov](https://codecov.io/gh/hedythedev/gtrending/branch/master/graph/badge.svg?token=J19AQKEO4W)](https://codecov.io/gh/hedythedev/gtrending)
+![checks](https://github.com/hedyhli/gtrending/workflows/checks/badge.svg)
+[![codecov](https://codecov.io/gh/hedyhli/gtrending/branch/master/graph/badge.svg?token=J19AQKEO4W)](https://codecov.io/gh/hedyhli/gtrending)
 [![docs status](https://readthedocs.org/projects/gtrending/badge/?version=latest)](https://gtrending.readthedocs.io/en/latest/)
 [![pypi version](https://img.shields.io/pypi/v/gtrending)](https://pypi.org/project/gtrending/)
 [![Python Requirements](https://img.shields.io/pypi/pyversions/gtrending)](https://pypi.org/project/gtrending/)
@@ -39,11 +39,11 @@ pip3 install gtrending
 
 ## API
 
-Documentation: [read the docs](https://gtrending.readthedocs.io/en/latest/)
+Documentation: [Read the docs](https://gtrending.readthedocs.io/en/latest/)
 
 ### `fetch_repos()`
 
-> Fetch trending repositories on GitHub
+> Fetch trending repositories on GitHub.
 
 Parameters:
 * `language (str, optional)`:  Filtering by language, eg: python
@@ -51,21 +51,21 @@ Parameters:
 * `since (str, optional)`: The time range, choose from: [daily, weekly, monthly]. Defaults to "daily"
 
 Returns:
-> A list of dicts containing information for the trending repositories found
+> A list of dictionaries containing information for the trending repositories found.
 
 
 <br>
 
 ### `fetch_developers()`
 
-> Fetch trending developers on GitHub
+> Fetch trending developers on GitHub.
 
 Parameters:
 * `language (str, optional)`: The programming language, eg: python
 * `since (str, optional)`: The time range, choose from [daily, weekly, monthly]. Defaults to "daily"
 
 Returns:
-> A list of dicts containing information for the trending repositories found
+> A list of dictionaries containing information for the trending developers found.
 
 <br>
 
@@ -74,22 +74,22 @@ Returns:
 > Fetch languages
 
 Returns:
-> A list of dictionaries containing languages
+> A list of dictionaries containing programming languages.
 
 <br>
 
 ### `spoken_languages_list()`
 
-> Fetch spoken languages
+> Fetch spoken languages.
 
 Returns:
-> A list of spoken languages
+> A list of spoken languages.
 
 <br>
 
 ### `check_language()`
 
-> Check if the language exists
+> Check if the language exists.
 
 Parameters:
 * `language (str)`:  The language, eg: python.
@@ -101,7 +101,7 @@ Returns:
 
 ### `check_spoken_language()`
 
-> Check if the spoken language exists
+> Check if the spoken language exists.
 
 Parameters:
 * `spoken_language_code (str)`: The spoken language, eg: en for english.
@@ -113,10 +113,10 @@ Returns:
 
 ### `check_since()`
 
-> Check if the time range is correct
+> Check if the time range is correct.
 
 Parameters:
-* `since (str)`:  The time range
+* `since (str)`:  The time range.
 
 Returns:
 > A boolean value. True for valid parameter, False otherwise.
