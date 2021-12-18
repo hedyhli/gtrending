@@ -35,5 +35,5 @@ setup(
     include_package_data=True,
     install_requires=[
         "requests>=2.22.0",
-    ],
+    ],entry_points={"console_scripts": ["gtrending = gtrending.cli:main"]},
 )
