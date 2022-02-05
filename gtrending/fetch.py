@@ -1,11 +1,8 @@
 """
-Python library to fetch trending repositories/users using github-trending-api
-
-Made by Hedy Li,
-Code on GitHub
+Fetch trending repositories and developers using github-trending-api
 """
 
-from typing import Optional, List
+from typing import List
 
 import requests
 

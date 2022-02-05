@@ -1,5 +1,3 @@
-""" setup """
-
 import io
 
 from setuptools import setup
@@ -15,13 +13,13 @@ VERSION = __version__
 setup(
     name="gtrending",
     version=VERSION,
-    description="Library to fetch trending repos/users on GitHub",
+    description="Fetch trending repositories and users on GitHub",
     long_description=LONG_DESC,
     long_description_content_type="text/markdown",
     python_requires=">=3.6",
-    url="https://github.com/hedythedev/gtrending",
-    author="Hedy Li",
-    author_email="hedyhyry@gmail.com",
+    url="https://github.com/hedyhli/gtrending",
+    author="hedy",
+    author_email="hedy@tilde.cafe",
     license="MIT",
     classifiers=[
         "License :: OSI Approved :: MIT License",

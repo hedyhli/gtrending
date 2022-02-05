@@ -11,37 +11,25 @@ Welcome
    :caption: Contents:
 
 
-Lightweight and easy-to-use python library for fetching
-trending repositories and developers. Relies on
-`github-trending-api
-<https://github.com/huchenme/github-trending-api>`_
-which is in JavaScript, so gtrending aims to fill the gap
-for python.
+Fetch repositories and developers from `GitHub Trending
+<https://github.com/trending>`_.
 
-Simple example, fetching the trending python projects and
+Here's a simple example, get the trending python projects and
 display their full names::
 
     from gtrending import fetch_repos
 
-    repos = fetch_repos(language="python")  # get the result as a dict
+
+    repos = fetch_repos(language="python")  # Returns a dictionary
 
     for repo in repos:
-        print(repo["fullname"])  # full name (user/repo) of each repo
-
-
-Features
---------
-
-- Fetching repos/developers by language, and time range
-- Fast and efficient
-- returns complete data
-- pytest-ed
+        print(repo["fullname"])  # "user/repo" for each repo
 
 
 Installation
 ------------
 
-Install gtrending by running::
+Install gtrending on PyPI using your favorite package manage. For example::
 
     pip3 install gtrending
 
@@ -54,7 +42,7 @@ Contribute
 Support
 -------
 
-If you are having issues, please open an issue on the github issue tracker
+If you are having issues, please open an issue on the github issue tracker as linked above.
 
 
 License

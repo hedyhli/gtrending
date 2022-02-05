@@ -19,8 +19,8 @@ sys.path.insert(0, os.path.abspath(".."))
 # -- Project information -----------------------------------------------------
 
 project = "gtrending"
-copyright = "2020, Hedy Li"
-author = "Hedy Li"
+copyright = "2020-2022 hedy"
+author = "hedy"
 
 # The full version, including alpha/beta/rc tags
 from gtrending import __version__

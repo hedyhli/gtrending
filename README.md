@@ -7,25 +7,22 @@
 [![Python Requirements](https://img.shields.io/pypi/pyversions/gtrending)](https://pypi.org/project/gtrending/)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
-Lightweight and easy-to-use python library for fetching
-trending repositories and developers. Relies on
-[github-trending-api](https://github.com/huchenme/github-trending-api),
-which is in JavaScript, so gtrending aims to fill the gap
-for python.
+Fetch repositories and developers from [GitHub
+trending](https://github.com/trending).
 
 
 ```python
 from gtrending import fetch_repos
 
 
-repos = fetch_repos(language="python")  # get the result as a dict
+repos = fetch_repos(language="python")  # Returns a dictionary
 
 for repo in repos:
-    print(repo["fullname"])  # full name (user/repo) of each repo
+    print(repo["fullname"])  # "user/repo" for each repo
 ```
 
-The above example will fetch all the trending Python projects
-on GitHub trending today and print their full names.
+The above example will fetch all the trending Python projects on GitHub
+trending today and print their full names.
 
 
 ## Requirements
@@ -33,9 +30,22 @@ on GitHub trending today and print their full names.
 
 
 ## Installation
+
+gtrending is published on PyPI, use your favorite package manager and add it as
+a dependency.
+
+Pip:
 ```
 pip3 install gtrending
 ```
+
+Poetry:
+```
+poetry add gtrending
+```
+
+You get the idea.
+
 
 ## API
 
@@ -47,11 +57,14 @@ Documentation: [Read the docs](https://gtrending.readthedocs.io/en/latest/)
 
 Parameters:
 * `language (str, optional)`:  Filtering by language, eg: python
-* `spoken_language_code (str, optional)`: The spoken language, eg: en for english
-* `since (str, optional)`: The time range, choose from: [daily, weekly, monthly]. Defaults to "daily"
+* `spoken_language_code (str, optional)`: The spoken language, eg: en for
+  english
+* `since (str, optional)`: The time range, choose from: [daily, weekly,
+  monthly]. Defaults to "daily"
 
 Returns:
-> A list of dictionaries containing information for the trending repositories found.
+> A list of dictionaries containing information for the trending repositories
+> found.
 
 
 <br>
@@ -62,10 +75,12 @@ Returns:
 
 Parameters:
 * `language (str, optional)`: The programming language, eg: python
-* `since (str, optional)`: The time range, choose from [daily, weekly, monthly]. Defaults to "daily"
+* `since (str, optional)`: The time range, choose from [daily, weekly,
+  monthly]. Defaults to "daily"
 
 Returns:
-> A list of dictionaries containing information for the trending developers found.
+> A list of dictionaries containing information for the trending developers
+> found.
 
 <br>
 
@@ -120,3 +135,11 @@ Parameters:
 
 Returns:
 > A boolean value. True for valid parameter, False otherwise.
+
+---
+
+## Uses
+
+* [github-trending-api](https://github.com/huchenme/github-trending-api) --
+  JavaScript library with API
+* requests -- Making API requests
