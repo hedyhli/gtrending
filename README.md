@@ -49,7 +49,7 @@ You get the idea.
 
 ## API
 
-Documentation: [Read the docs](https://gtrending.readthedocs.io/en/latest/)
+Documentation: [Read the docs](https://gtrending.readthedocs.io/en/latest/API.html)
 
 ### `fetch_repos()`
 

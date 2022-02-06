@@ -64,4 +64,4 @@ Indices and tables
    self
 .. toctree::
 
-   fetch
+   API
