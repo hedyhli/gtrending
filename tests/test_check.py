@@ -10,6 +10,8 @@ def test_check_language():
 def test_check_spoken_language():
     assert check_spoken_language("en")
     assert check_spoken_language("es")
+    assert check_spoken_language("English")
+    assert check_spoken_language("spanish")
     assert not check_spoken_language("notreal")
 
 
