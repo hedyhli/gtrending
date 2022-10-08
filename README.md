@@ -119,7 +119,7 @@ Returns:
 > Check if the spoken language exists.
 
 Parameters:
-* `spoken_language_code (str)`: The spoken language, eg: en for english.
+* `spoken_language_code (str)`: The spoken language, eg: English, or en, for English.
 
 Returns:
 > A boolean value. True for valid spoken language, False otherwise.
