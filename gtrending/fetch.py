@@ -50,7 +50,7 @@ def fetch_repos(
     return repos
 
 
-def fetch_developers(language: str = "", since: str = "daily") -> dict:
+def fetch_developers(language: str = "", since: str = "daily") -> List[dict]:
     """Fetch trending developers on GitHub.
 
     Parameters:

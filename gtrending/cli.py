@@ -62,6 +62,7 @@ def main():
     )
     parser_repo.set_defaults(func=show_repos)
 
+
     parser_developer = subparser.add_parser(
         'developers',
         parents=[parent_json, parent_filter]
@@ -107,10 +108,10 @@ def show_developers(args: argparse.Namespace):
 
 
 def show_langs(args: argparse.Namespace):
-    langauges = languages_list()
+    languages = languages_list()
 
     if args.json:
-        print_json(langauges)
+        print_json(languages)
     else:
         for entry in languages_list():
             print(entry["name"])
@@ -134,7 +135,7 @@ def show_repos(args: argparse.Namespace):
     )
 
     repos.sort(
-        key=lambda repo: repo.get(args.sort),
+        key=lambda repo: repo[args.sort],
         reverse=args.sort_reverse
     )
 
