@@ -8,75 +8,87 @@ from .fetch import (
     fetch_developers,
     languages_list,
     spoken_languages_list,
-    check_language,
-    check_spoken_language,
-    check_since,
 )
-"""
-gtrending repos
-gtrending devs|developers
-gtrending lang|code-lang
-gtrending spoken-lang
-
-"""
-
-def print_json(value):
-    print(json.dumps(value, indent=2))
-
-def _repr_item(title: str, props: Dict[str, Any]) -> str:
-    string = title + '\n'
-    indent = " "*4 
-    max_key_len = len(max(props.keys(), key=len))
-    for key, value in props.items():
-        string += indent + (key + ':').ljust(max_key_len+2) + str(value) + "\n"
-    return string
-    
-
-def repr_repo(repo: Dict) -> str:
-    title = repo['name']
-    props = {
-        'URL': repo['url'],
-        'Author': repo['author'],
-        'Language': repo['language'],
-        'Forks': repo['forks'],
-        'Stars': repo['stars'],
-    }
-    return _repr_item(title, props)
 
 
-def repr_developer(developer: Dict) -> str:
-    title = developer['username']
-    props = {
-        'Name': developer['name'],
-        'URL': developer['url']
-    }
+def main():
 
-    if developer['sponsorUrl'] is not None:
-        props['Sponsor'] = developer['sponsorUrl']
-
-    if developer['repo'] is not None:
-        props['Repo'] = developer['repo']['url']
-
-    return _repr_item(title, props)
-
-
-def show_repos(args: argparse.Namespace):
-    repos = fetch_repos(
-        language=args.language,
-        spoken_language_code=args.spoken_language,
-        since=args.since
+    parser = argparse.ArgumentParser('Gtrending')
+    subparser = parser.add_subparsers(dest='command')
+  
+    # Extract common arguments in parents
+    parent_json = argparse.ArgumentParser(add_help=False)
+    parent_json.add_argument(
+        '--json',
+        '-J',
+        action=argparse.BooleanOptionalAction,
+        default=False,
     )
 
-    repos.sort(
-        key=lambda repo: repo.get(args.sort),
-        reverse=args.sort_reverse
+    parent_filter = argparse.ArgumentParser(add_help=False)
+    parent_filter.add_argument(
+        '--language',
+        '--lang',
+        default=""
+    )
+    parent_filter.add_argument(
+        '--since',
+        type=str,
+        choices=['daily', 'monthly', 'weekly'],
+        default='daily'
     )
 
-    if args.json:
-        print_json(repos)
+
+    parser_repo = subparser.add_parser(
+        'repos',
+        parents=[parent_json, parent_filter]
+    )
+    parser_repo.add_argument(
+        '--spoken-language',
+        '--spoken-lang',
+        default=""
+    )
+    parser_repo.add_argument(
+        '--sort',
+        type=str,
+        choices=['name', 'forks', 'stars'],
+        default='name'
+    )
+    parser_repo.add_argument(
+        '--sort-reverse',
+        type=bool,
+        action=argparse.BooleanOptionalAction,
+        default=False
+    )
+    parser_repo.set_defaults(func=show_repos)
+
+    parser_developer = subparser.add_parser(
+        'developers',
+        parents=[parent_json, parent_filter]
+    )
+    parser_developer.set_defaults(func=show_developers)
+
+
+    parser_langs = subparser.add_parser(
+        'langs',
+        parents=[parent_json]
+    )
+    parser_langs.set_defaults(func=show_langs)
+
+
+    parser_spoken_langs = subparser.add_parser(
+        'spoken-langs',
+        parents=[parent_json]
+    )
+    parser_spoken_langs.set_defaults(func=show_spoken_langs)
+
+
+    args = parser.parse_args()
+    if args.command == None:
+        parser.print_help()
+        exit(1)
     else:
-        for repo in repos:
-            print(repr_repo(repo))
+        args.func(args)
 
 
 def show_developers(args: argparse.Namespace):
@@ -114,67 +126,61 @@ def show_spoken_langs(args: argparse.Namespace):
             print(entry["urlParam"], entry["name"])
 
 
-def main():
-    json_parser = argparse.ArgumentParser(add_help=False)
-    json_parser.add_argument(
-        '--json',
-        '-J',
-        action=argparse.BooleanOptionalAction,
-        default=False,
+def show_repos(args: argparse.Namespace):
+    repos = fetch_repos(
+        language=args.language,
+        spoken_language_code=args.spoken_language,
+        since=args.since
     )
 
-    parser = argparse.ArgumentParser('Gtrending')
-    subparser = parser.add_subparsers(dest='command')
-  
+    repos.sort(
+        key=lambda repo: repo.get(args.sort),
+        reverse=args.sort_reverse
+    )
 
-    parser_repo = subparser.add_parser(
-        'repos',
-        parents=[json_parser]
-    )
-    parser_repo.add_argument(
-        '--language',
-        '--lang',
-        '-L',
-        default=""
-    )
-    parser_repo.add_argument(
-        '--spoken-language',
-        '--spoken-lang',
-        default=""
-    )
-    parser_repo.add_argument('--since', type=str, choices=['daily', 'monthly', 'weekly'], default='daily')
-    parser_repo.add_argument('--sort', type=str, choices=['name', 'forks', 'stars'], default='name')
-    parser_repo.add_argument('--sort-reverse', type=bool, action=argparse.BooleanOptionalAction, default=False)
-    parser_repo.set_defaults(func=show_repos)
-
-    # Developer command
-    parser_developer = subparser.add_parser(
-        'developers',
-        parents=[json_parser]
-    )
-    parser_developer.add_argument(
-        '--language',
-        '--lang',
-        '-L',
-        default=""
-    )
-    parser_developer.add_argument(
-        '--since',
-        type=str,
-        choices=['daily', 'monthly', 'weekly'],
-        default='daily'
-    )
-    parser_developer.set_defaults(func=show_developers)
-
-    parser_developer = subparser.add_parser('langs', parents=[json_parser])
-    parser_developer.set_defaults(func=show_langs)
-
-    parser_developer = subparser.add_parser('spoken-langs', parents=[json_parser])
-    parser_developer.set_defaults(func=show_spoken_langs)
-
-    args = parser.parse_args()
-    if args.command == None:
-        parser.print_help()
-        exit(1)
+    if args.json:
+        print_json(repos)
     else:
-        args.func(args)
+        for repo in repos:
+            print(repr_repo(repo))
+
+
+def repr_repo(repo: Dict) -> str:
+    title = repo['name']
+    props = {
+        'URL': repo['url'],
+        'Author': repo['author'],
+        'Language': repo['language'],
+        'Forks': repo['forks'],
+        'Stars': repo['stars'],
+    }
+    return repr_item(title, props)
+
+
+def repr_developer(developer: Dict) -> str:
+    title = developer['username']
+    props = {
+        'Name': developer['name'],
+        'URL': developer['url']
+    }
+
+    if developer['sponsorUrl'] is not None:
+        props['Sponsor'] = developer['sponsorUrl']
+
+    if developer['repo'] is not None:
+        props['Repo'] = developer['repo']['url']
+
+    return repr_item(title, props)
+
+
+def repr_item(title: str, props: Dict[str, Any]) -> str:
+    string = title + '\n'
+    indent = " "*4 
+    max_key_len = len(max(props.keys(), key=len))
+    for key, value in props.items():
+        string += indent + (key + ':').ljust(max_key_len+2) + str(value) + "\n"
+    return string
+
+
+def print_json(value):
+    print(json.dumps(value, indent=2))
