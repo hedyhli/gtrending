@@ -12,28 +12,57 @@ from .fetch import (
 
 
 def main():
+    parser = argparse.ArgumentParser(
+        'gtrending',
+        description='Query the GitHub Trending page',
+        usage='gtrending <command>',
+        epilog='Run `gtrending <command> --help` for more details',
+    )
 
-    parser = argparse.ArgumentParser('Gtrending')
-    subparser = parser.add_subparsers(dest='command')
+    # This is a workaround to allow `--json` to be used before command names
+    # like `gtrending --json repos` and to keep `--json` in the main help message
+    parser.add_argument(
+        '-j',
+        '--json',
+        help='print output in json format',
+        action='store_true',
+        default=False,
+        dest='json_main'   # see: https://stackoverflow.com/a/37933841
+    )
+
+    subparser = parser.add_subparsers(
+        title='commands',
+        dest='command',
+        prog='gtrending'
+    )
   
     # Extract common arguments in parents
     parent_json = argparse.ArgumentParser(add_help=False)
     parent_json.add_argument(
+        '-j',
         '--json',
-        '-J',
-        action=argparse.BooleanOptionalAction,
+        dest='json',
+        help='see output in json format',
+        action='store_true',
         default=False,
     )
 
     parent_filter = argparse.ArgumentParser(add_help=False)
     parent_filter.add_argument(
+        '-l',
         '--language',
-        '--lang',
+        dest='language',
+        metavar='lang',
+        help='One of the supported coding langauges',
         default=""
     )
     parent_filter.add_argument(
+        '-s',
         '--since',
+        dest='since',
         type=str,
+        metavar='duration',
+        help="Options: 'daily', 'monthly' or 'weekly'",
         choices=['daily', 'monthly', 'weekly'],
         default='daily'
     )
@@ -41,23 +70,30 @@ def main():
 
     parser_repo = subparser.add_parser(
         'repos',
+        help='fetch trending repos',
         parents=[parent_json, parent_filter]
     )
     parser_repo.add_argument(
+        '-S',
         '--spoken-language',
-        '--spoken-lang',
+        dest='spoken_language',
+        help='one of the supported spoken languages',
+        metavar='spoken_lang',
         default=""
     )
     parser_repo.add_argument(
         '--sort',
+        metavar='key',
+        help="options: 'name', 'forks' and 'stars'",
         type=str,
         choices=['name', 'forks', 'stars'],
         default='name'
     )
     parser_repo.add_argument(
+        '-r',
         '--sort-reverse',
-        type=bool,
-        action=argparse.BooleanOptionalAction,
+        dest='sort_reverse',
+        action='store_true',
         default=False
     )
     parser_repo.set_defaults(func=show_repos)
@@ -65,6 +101,7 @@ def main():
 
     parser_developer = subparser.add_parser(
         'developers',
+        help='fetch trending developers',
         parents=[parent_json, parent_filter]
     )
     parser_developer.set_defaults(func=show_developers)
@@ -72,6 +109,7 @@ def main():
 
     parser_langs = subparser.add_parser(
         'langs',
+        help='fetch list of supported coding languages',
         parents=[parent_json]
     )
     parser_langs.set_defaults(func=show_langs)
@@ -79,6 +117,7 @@ def main():
 
     parser_spoken_langs = subparser.add_parser(
         'spoken-langs',
+        help='fetch list of supported spoken languages',
         parents=[parent_json]
     )
     parser_spoken_langs.set_defaults(func=show_spoken_langs)
@@ -89,6 +128,7 @@ def main():
         parser.print_help()
         exit(1)
     else:
+        args.json = args.json or args.json_main
         args.func(args)
 
 
