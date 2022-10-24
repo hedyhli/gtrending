@@ -11,11 +11,11 @@ from .fetch import (
 )
 
 
-def main():
+def main(args = None):
     parser = argparse.ArgumentParser(
         'gtrending',
         description='Query the GitHub Trending page',
-        usage='gtrending <command>',
+        usage='gtrending [--json] <command> [<args>]',
         epilog='Run `gtrending <command> --help` for more details',
     )
 
@@ -42,7 +42,7 @@ def main():
         '-j',
         '--json',
         dest='json',
-        help='see output in json format',
+        help='print output in json format',
         action='store_true',
         default=False,
     )
@@ -123,7 +123,7 @@ def main():
     parser_spoken_langs.set_defaults(func=show_spoken_langs)
 
 
-    args = parser.parse_args()
+    args = parser.parse_args(args)
     if args.command == None:
         parser.print_help()
         exit(1)
