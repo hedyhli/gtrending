@@ -45,7 +45,7 @@ def fetch_repos(
         repo_language = repo.get("language")
         if language:
             if not repo_language or repo_language.lower() != language.lower():
-                continue
+                continue  # pragma: no cover
         repos.append(repo)
     return repos
 
