@@ -2,8 +2,6 @@ from gtrending import fetch_developers
 import pytest
 
 
-
-
 def test_all(developer_assertion):
     res = fetch_developers()
     developer_assertion(res)

@@ -2,7 +2,6 @@ from gtrending import fetch_repos
 import pytest
 
 
-
 def test_all(repo_assertion):
     res = fetch_repos()
     repo_assertion(res)

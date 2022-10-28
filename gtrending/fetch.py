@@ -129,7 +129,10 @@ def check_spoken_language(spoken_language: str = "") -> bool:
     for entry in spoken_languages_list():
         spoken_languages.extend(entry.get("name").split(", "))
         spoken_languages.append(entry.get("urlParam"))
-    if spoken_language.title() in spoken_languages or spoken_language in spoken_languages:
+    if (
+        spoken_language.title() in spoken_languages
+        or spoken_language in spoken_languages
+    ):
         return True
     return False
 

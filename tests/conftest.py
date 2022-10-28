@@ -41,9 +41,11 @@ def developers_basic_assertions(devs):
                 == "https://github.com/" + developer["username"] + "/" + repo["name"]
             )
 
+
 @pytest.fixture
 def repo_assertion():
     return repos_basic_assertions
+
 
 @pytest.fixture
 def developer_assertion():
@@ -57,4 +59,5 @@ def run_cli(capsys):
         captured = capsys.readouterr()
 
         return captured.out
+
     return _run_cli

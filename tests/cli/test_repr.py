@@ -2,8 +2,9 @@ from gtrending import cli
 import textwrap
 import pytest
 
+
 @pytest.fixture
-def example_developer(): 
+def example_developer():
     return {
         "username": "alex",
         "name": "Alex Gaynor",
@@ -12,10 +13,11 @@ def example_developer():
         "avatar": "https://avatars.githubusercontent.com/u/772",
         "repo": {
             "name": "what-happens-when",
-            "description": 'An attempt ...',
+            "description": "An attempt ...",
             "url": "https://github.com/alex/what-happens-when",
         },
     }
+
 
 def test_repr_item():
     string = cli.repr_item(
@@ -28,6 +30,7 @@ def test_repr_item():
             Second-Key: 42
         """
     )
+
 
 def test_repr_repo():
     example_repo = {
@@ -64,32 +67,41 @@ def test_repr_repo():
         """
     )
 
+
 def test_repr_developer_without_sponsor(example_developer):
 
     string = cli.repr_developer(example_developer)
-    assert string == textwrap.dedent("""\
+    assert string == textwrap.dedent(
+        """\
         alex
             Name: Alex Gaynor
             URL:  https://github.com/alex
             Repo: https://github.com/alex/what-happens-when
-        """)
+        """
+    )
+
 
 def test_repr_developer_with_sponsor(example_developer):
-    example_developer['sponsorUrl'] = 'https://sponsor'
+    example_developer["sponsorUrl"] = "https://sponsor"
     string = cli.repr_developer(example_developer)
-    assert string == textwrap.dedent("""\
+    assert string == textwrap.dedent(
+        """\
         alex
             Name:    Alex Gaynor
             URL:     https://github.com/alex
             Sponsor: https://sponsor
             Repo:    https://github.com/alex/what-happens-when
-        """)
+        """
+    )
+
 
 def test_repr_developer_without_repo(example_developer):
-    example_developer['repo'] = None
+    example_developer["repo"] = None
     string = cli.repr_developer(example_developer)
-    assert string == textwrap.dedent("""\
+    assert string == textwrap.dedent(
+        """\
         alex
             Name: Alex Gaynor
             URL:  https://github.com/alex
-        """)
+        """
+    )
