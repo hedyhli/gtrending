@@ -24,7 +24,7 @@ def main(args=None):
     parser.add_argument(
         "-j",
         "--json",
-        help="print output in json format",
+        help="Print output in json format",
         action="store_true",
         default=False,
         dest="json_main",  # see: https://stackoverflow.com/a/37933841
@@ -40,7 +40,7 @@ def main(args=None):
         "-j",
         "--json",
         dest="json",
-        help="print output in json format",
+        help="Print output in json format",
         action="store_true",
         default=False,
     )
@@ -66,20 +66,20 @@ def main(args=None):
     )
 
     parser_repo = subparser.add_parser(
-        "repos", help="fetch trending repos", parents=[parent_json, parent_filter]
+        "repos", help="Fetch trending repos", parents=[parent_json, parent_filter]
     )
     parser_repo.add_argument(
         "-S",
         "--spoken-language",
         dest="spoken_language",
-        help="one of the supported spoken languages",
+        help="One of the supported spoken languages",
         metavar="spoken_lang",
         default="",
     )
     parser_repo.add_argument(
         "--sort",
         metavar="key",
-        help="options: 'name', 'forks' and 'stars'",
+        help="Options: 'name', 'forks' and 'stars'",
         type=str,
         choices=["name", "forks", "stars"],
         default="name",
@@ -91,19 +91,19 @@ def main(args=None):
 
     parser_developer = subparser.add_parser(
         "developers",
-        help="fetch trending developers",
+        help="Fetch trending developers",
         parents=[parent_json, parent_filter],
     )
     parser_developer.set_defaults(func=show_developers)
 
     parser_langs = subparser.add_parser(
-        "langs", help="fetch list of supported coding languages", parents=[parent_json]
+        "langs", help="Fetch list of supported coding languages", parents=[parent_json]
     )
     parser_langs.set_defaults(func=show_langs)
 
     parser_spoken_langs = subparser.add_parser(
         "spoken-langs",
-        help="fetch list of supported spoken languages",
+        help="Fetch list of supported spoken languages",
         parents=[parent_json],
     )
     parser_spoken_langs.set_defaults(func=show_spoken_langs)
