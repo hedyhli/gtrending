@@ -154,6 +154,7 @@ gtrending [--json] <command> [<args>]
 ```
 
 ### Quick Examples
+
 ```sh
 # Sort repos by stars
 gtrending repos --sort stars       
@@ -194,12 +195,11 @@ gtrending repos --json | jq '.[] | .fullname'            # Not a json anymore
 
 # Similarly for trending developers
 # Show only username and repository url
-gtrending developers -j | jq '.[] | {username, repo: .repo.url}'
+gtrending developers -j | jq '[ .[] | {username, repo: .repo_url} ]'
 
 # Show only developers with a sponsorUrl
-gtrending developers -j | jq 'map(select(.sponsorUrl != null)) | .[] | {username, repo_name: .repo.name}'
+gtrending developers -j | jq '[ map(select(.sponsorUrl != null)) | .[] | {username, repo_name: .repo.name} ]'
 ```
-
 
 
 
