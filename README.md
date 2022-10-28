@@ -21,8 +21,16 @@ for repo in repos:
     print(repo["fullname"])  # "user/repo" for each repo
 ```
 
-The above example will fetch all the trending Python projects on GitHub
-trending today and print their full names.
+or using the CLI
+
+```sh
+gtrending repos --language python
+```
+
+The above examples will fetch all the trending Python projects on GitHub
+trending today.
+
+
 
 
 ## Requirements
@@ -137,6 +145,63 @@ Returns:
 > A boolean value. True for valid parameter, False otherwise.
 
 ---
+
+## CLI
+
+Usage:
+```
+gtrending [--json] <command> [<args>]
+```
+
+### Quick Examples
+```sh
+# Sort repos by stars
+gtrending repos --sort stars       
+
+# See only python repositories
+gtrending repos --language python  
+
+# See weekly trending repos
+gtrending repos --since weekly --sort forks  
+
+# Print output in json format (-j/--json)
+gtrending repos --json             
+
+# See trending rust developers
+gtrending developers --language rust
+
+# See available coding languages
+gtrending langs
+
+# See available spoken languages
+gtrending spoken-langs
+
+
+# Help commands
+gtrending --help
+# or see available arguments for specific sub-command
+gtrending developers --help
+
+
+
+## Usage with jq
+
+# Show only fullname (user/repo) and total stars for each repo
+gtrending repos --json | jq '[.[] | {fullname, stars}]'  # Still a json output
+
+# Show only fullname for repos
+gtrending repos --json | jq '.[] | .fullname'            # Not a json anymore
+
+# Similarly for trending developers
+# Show only username and repository url
+gtrending developers -j | jq '.[] | {username, repo: .repo.url}'
+
+# Show only developers with a sponsorUrl
+gtrending developers -j | jq 'map(select(.sponsorUrl != null)) | .[] | {username, repo_name: .repo.name}'
+```
+
+
+
 
 ## Uses
 

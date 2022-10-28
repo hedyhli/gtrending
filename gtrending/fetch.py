@@ -45,12 +45,12 @@ def fetch_repos(
         repo_language = repo.get("language")
         if language:
             if not repo_language or repo_language.lower() != language.lower():
-                continue
+                continue  # pragma: no cover
         repos.append(repo)
     return repos
 
 
-def fetch_developers(language: str = "", since: str = "daily") -> dict:
+def fetch_developers(language: str = "", since: str = "daily") -> List[dict]:
     """Fetch trending developers on GitHub.
 
     Parameters:
