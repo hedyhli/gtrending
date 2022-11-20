@@ -51,7 +51,7 @@ def main(args=None):
         "--language",
         dest="language",
         metavar="lang",
-        help="One of the supported coding langauges",
+        help="One of the supported coding languages",
         default="",
     )
     parent_filter.add_argument(
