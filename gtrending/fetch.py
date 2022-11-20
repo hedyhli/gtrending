@@ -14,6 +14,10 @@ def fetch_repos(
 ) -> List[dict]:
     """Fetch trending repositories on GitHub.
 
+    Note: spoken_language_code argument must be the language code ("en" and not
+    "english"). To convert language name to language code, use
+    convert_spoken_language_name_to_code()
+
     Parameters:
         language (str, optional):  Filtering by language, eg: python
         spoken_language_code (str, optional): The spoken language, eg: en for english
@@ -26,7 +30,7 @@ def fetch_repos(
     if language and not check_language(language):
         raise ValueError(f"Invalid language argument: {language}")
 
-    if spoken_language_code and not check_spoken_language(spoken_language_code):
+    if spoken_language_code and not check_spoken_language_code(spoken_language_code):
         raise ValueError(
             f"Invalid spoken_language_code argument: {spoken_language_code}"
         )
@@ -96,7 +100,7 @@ def spoken_languages_list() -> list:
     return response
 
 
-def check_language(language: str = "") -> bool:
+def check_language(language: str) -> bool:
     """Check if the language exists.
 
     Parameters:
@@ -105,6 +109,9 @@ def check_language(language: str = "") -> bool:
     Returns:
         A boolean value. True for valid language, False otherwise.
     """
+    if not language:
+        return False
+
     languages = languages_list()
     language = language.lower()
 
@@ -115,29 +122,93 @@ def check_language(language: str = "") -> bool:
     return False
 
 
-def check_spoken_language(spoken_language: str = "") -> bool:
-    """Check if the spoken language exists.
+def spoken_languages_dict() -> dict:
+    sl = {}
+    for entry in spoken_languages_list():
+        sl[entry.get("urlParam")] = entry.get("name").split(", ")
+    return sl
+
+
+def spoken_languages_codes() -> list:
+    """List of valid spoken language codes"""
+    sl = spoken_languages_dict()
+    return list(sl.keys())
+
+
+def spoken_languages_names() -> list:
+    """List of valid spoken language names"""
+    sl = spoken_languages_dict()
+    names = []
+    for code in sl.keys():
+        names.extend(sl[code])
+    return names
+
+
+def convert_spoken_language_name_to_code(sl_name: str) -> str:
+    """Convert spoken language name to its code.
+
+    Returns an empty string for invalid name.
 
     Parameters:
-        spoken_language (str): The spoken language, eg: English, or en, for English.
+        sl_name: The spoken language name
+
+    Returns:
+        A string - the corresponding spoken_language code.
+    """
+    sl = spoken_languages_dict()
+    for code in sl.keys():
+        if sl_name in sl[code]:
+            return code
+
+    # TODO: is ValueError better?
+    return ""
+
+
+def check_spoken_language_name(sl: str) -> bool:
+    """Check if the spoken language name exists, case-insensitive.
+
+    Parameters:
+        sl (str): The spoken language, eg: English, Spanish
+
+    Returns:
+        A boolean value. True for valid spoken language name, False otherwise.
+    """
+    if not sl:
+        return False
+    sl = sl.lower()
+    return sl in [i.lower() for i in spoken_languages_names()]
+
+
+def check_spoken_language_code(sl: str) -> bool:
+    """Check if the spoken language code exists, case-insensitive.
+
+    Parameters:
+        sl (str): The spoken language code, eg: en, es
+
+    Returns:
+        A boolean value. True for valid spoken language code, False otherwise.
+    """
+    if not sl:
+        return False
+    sl = sl.lower()
+    return sl in spoken_languages_codes()
+
+
+def check_spoken_language(sl: str) -> bool:
+    """Check if the spoken language code or name exists.
+
+    Parameters:
+        sl (str): The spoken language, eg: English, or en, for English.
 
     Returns:
         A boolean value. True for valid spoken language, False otherwise.
     """
-    spoken_language = spoken_language.lower()
-    spoken_languages = []
-    for entry in spoken_languages_list():
-        spoken_languages.extend(entry.get("name").split(", "))
-        spoken_languages.append(entry.get("urlParam"))
-    if (
-        spoken_language.title() in spoken_languages
-        or spoken_language in spoken_languages
-    ):
-        return True
-    return False
+    if not sl:
+        return False
+    return check_spoken_language_code(sl) or check_spoken_language_name(sl)
 
 
-def check_since(since: str = "") -> bool:
+def check_since(since: str) -> bool:
     """Check if the time range value is correct.
 
     Parameters:
