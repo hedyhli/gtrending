@@ -1,6 +1,9 @@
 from .fetch import (
     fetch_repos,
     fetch_developers,
+)
+
+from .paramutils import (
     languages_list,
     spoken_languages_list,
     spoken_languages_codes,
