@@ -13,7 +13,7 @@ VERSION = __version__
 setup(
     name="gtrending",
     version=VERSION,
-    description="Fetch trending repositories and users on GitHub",
+    description="Trending repositories and developers on GitHub",
     long_description=LONG_DESC,
     long_description_content_type="text/markdown",
     python_requires=">=3.6",
@@ -24,9 +24,11 @@ setup(
     classifiers=[
         "License :: OSI Approved :: MIT License",
         "Programming Language :: Python :: 3",
-        "Programming Language :: Python :: 3.6",
         "Programming Language :: Python :: 3.7",
         "Programming Language :: Python :: 3.8",
+        "Programming Language :: Python :: 3.9",
+        "Programming Language :: Python :: 3.10",
+        "Programming Language :: Python :: 3.11",
     ],
     packages=["gtrending"],
     include_package_data=True,
