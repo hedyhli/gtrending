@@ -31,11 +31,13 @@ def test_language_error(language):
         fetch_repos(language)
     excinfo.match("Invalid language argument")
 
+
 @pytest.mark.parametrize("since", [None, 7, "secondly", "monthy", "annually"])
 def test_since_error(since):
     with pytest.raises(ValueError) as excinfo:
         fetch_repos(since=since)
     excinfo.match("Invalid since argument")
+
 
 @pytest.mark.parametrize("sl", [None, -1, "ENGLISH", "english", "e", " "])
 def test_spoken_language_code_error(sl):

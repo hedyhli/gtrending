@@ -34,7 +34,7 @@ def test_convert_spoken_language_name_to_code(name, code):
         ("graphviz (dot)", "graphviz-(dot)"),
         ("html+django", "html+django"),
         ("does not exist", ""),
-    ]
+    ],
 )
 def test_convert_language_name_to_param(name, param):
     assert param == convert_language_name_to_param(name)

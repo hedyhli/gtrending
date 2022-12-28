@@ -52,7 +52,11 @@ def fetch_repos(
         raise ValueError(f"Invalid language argument: {language}")
     language_param = urlquote(language)
 
-    if not isinstance(spoken_language_code, str) or spoken_language_code and not check_spoken_language_code(spoken_language_code):
+    if (
+        not isinstance(spoken_language_code, str)
+        or spoken_language_code
+        and not check_spoken_language_code(spoken_language_code)
+    ):
         raise ValueError(
             f"Invalid spoken_language_code argument: {spoken_language_code}"
         )
@@ -72,7 +76,11 @@ def fetch_repos(
         repo_language = repo.get("language")
         # Edge cases
         if language:
-            if not repo_language or convert_language_name_to_param(repo_language).lower() != language.lower():
+            if (
+                not repo_language
+                or convert_language_name_to_param(repo_language).lower()
+                != language.lower()
+            ):
                 continue  # pragma: no cover
         if not repo.get("forks"):  # Sometimes forks is None
             repo["forks"] = 0  # pragma: no cover
@@ -103,7 +111,9 @@ def fetch_developers(language: str = "", since: str = "daily") -> List[dict]:
             f"Invalid since argument (must be 'daily', 'weekly' or 'monthly'): {since}"
         )
 
-    url: str = f"https://gtrend.yapie.me/developers?language={language_param}&since={since}"
+    url: str = (
+        f"https://gtrend.yapie.me/developers?language={language_param}&since={since}"
+    )
 
     res = requests.get(url).json()
     return res

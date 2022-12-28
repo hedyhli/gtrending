@@ -19,7 +19,9 @@ def test_since(developer_assertion, since):
     developer_assertion(res)
 
 
-@pytest.mark.parametrize("language", [None, tuple(), "language", "C%2B%2B", "HTML%2BDjango", "py"])
+@pytest.mark.parametrize(
+    "language", [None, tuple(), "language", "C%2B%2B", "HTML%2BDjango", "py"]
+)
 def test_language_error(language):
     with pytest.raises(ValueError) as excinfo:
         fetch_developers(language=language)
