@@ -148,7 +148,7 @@ def show_spoken_langs(args: argparse.Namespace):
         print_json(spoken_languages)
     else:
         for entry in spoken_languages_list():
-            print(entry["urlParam"], entry["name"])
+            print(entry["code"], entry["name"])
 
 
 def show_repos(args: argparse.Namespace):

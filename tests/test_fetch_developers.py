@@ -7,24 +7,27 @@ def test_all(developer_assertion):
     developer_assertion(res)
 
 
-def test_language(developer_assertion):
-    res = fetch_developers(language="python")
-    developer_assertion(res)
-    res = fetch_developers(language="javascript")
-    developer_assertion(res)
-
-
-def test_since(developer_assertion):
-    res = fetch_developers(since="weekly")
-    developer_assertion(res)
-    res = fetch_developers(since="monthly")
+@pytest.mark.parametrize("language", ["python", "Vim-Script", "c++", "Common-Lisp", ""])
+def test_language(developer_assertion, language):
+    res = fetch_developers(language=language)
     developer_assertion(res)
 
 
-def test_incorrect_values():
+@pytest.mark.parametrize("since", ["daily", "WEEKLY", "monthly", ""])
+def test_since(developer_assertion, since):
+    res = fetch_developers(since=since)
+    developer_assertion(res)
+
+
+@pytest.mark.parametrize("language", [None, tuple(), "language", "C%2B%2B", "HTML%2BDjango", "py"])
+def test_language_error(language):
     with pytest.raises(ValueError) as excinfo:
-        fetch_developers("false_language")
-    excinfo.match("Language value does not exist.")
+        fetch_developers(language=language)
+    excinfo.match("Invalid language argument")
+
+
+@pytest.mark.parametrize("since", [None, [], "annually", "minutely", "daly"])
+def test_since_error(since):
     with pytest.raises(ValueError) as excinfo:
-        fetch_developers("python", "annually")
-    excinfo.match("Since value is not correct.")
+        fetch_developers(since=since)
+    excinfo.match("Invalid since argument")

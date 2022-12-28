@@ -1,3 +1,5 @@
+import pytest
+
 from gtrending import (
     check_language,
     check_spoken_language,
@@ -9,9 +11,25 @@ from gtrending import (
 
 def test_check_language():
     assert check_language("python")
-    assert check_language("javascript")
+    assert check_language("JavaScript")
+    assert check_language("1c-enterprise")
+    assert check_language("1c-Enterprise")
+    assert not check_language("1c enterprise")
+    assert check_language("c#")
+    assert check_language("c++")
+    assert check_language("c")
+    assert check_language("world-of-warcraft-addon-data")
+    assert check_language("HTML+Django")
+    assert not check_language("HTML%2BDjango")
+    assert not check_language("c%23")
     assert not check_language("")
     assert not check_language("false_language")
+
+
+@pytest.mark.xfail()
+def test_check_language_special():
+    # FIXME: "'" is quoted, but the urlParam value in languages_list() is not
+    assert check_language("cap'n-proto")
 
 
 def test_check_spoken_language():

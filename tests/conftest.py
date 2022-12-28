@@ -1,10 +1,11 @@
 import pytest
 import shlex
-from gtrending import cli
+from gtrending import cli, convert_language_name_to_param
 
 # pytest shared functions: https://stackoverflow.com/a/42156088
 def repos_basic_assertions(repos, language=""):
     for repo in repos:
+        print(repo)
         assert isinstance(repo["name"], str)
         assert isinstance(repo["author"], str)
         assert repo["fullname"] == f"{repo['author']}/{repo['name']}"
@@ -13,11 +14,10 @@ def repos_basic_assertions(repos, language=""):
         assert repo["url"] == f"https://github.com/{repo['author']}/{repo['name']}"
         assert isinstance(repo["description"], (str, type(None)))
         assert repo["currentPeriodStars"] >= 0
-        print(repo.get("language"))
         assert isinstance(repo.get("language"), (str, type(None)))
         if language and repo.get("language"):
             # Sometimes language is None even with language filtering
-            assert str(repo.get("language")).lower() == language
+            assert convert_language_name_to_param(repo.get("language")) == language.lower()
         if "languageColor" in repo:
             if repo["languageColor"]:  # It could be None if repo language is None
                 assert len(repo["languageColor"]) in [4, 7]

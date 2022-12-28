@@ -5,6 +5,9 @@ from .fetch import (
 
 from .paramutils import (
     languages_list,
+    languages_params,
+    languages_dict,
+    languages_names,
     spoken_languages_list,
     spoken_languages_codes,
     spoken_languages_dict,
@@ -15,6 +18,7 @@ from .paramutils import (
     check_spoken_language,
     check_since,
     convert_spoken_language_name_to_code,
+    convert_language_name_to_param,
 )
 
 __version__ = "0.3.6"
