@@ -2,7 +2,7 @@ import io
 
 from setuptools import setup
 
-from gtrending import __version__
+from gtrending import __version__, URL, AUTHOR, AUTHOR_EMAIL
 
 with io.open("README.md", "rt", encoding="utf8") as f:
     LONG_DESC = f.read()
@@ -18,8 +18,8 @@ setup(
     long_description_content_type="text/markdown",
     python_requires=">=3.6",
     url="https://github.com/hedyhli/gtrending",
-    author="hedy",
-    author_email="hedy@tilde.cafe",
+    author=AUTHOR,
+    author_email=AUTHOR_EMAIL,
     license="MIT",
     classifiers=[
         "License :: OSI Approved :: MIT License",
@@ -33,7 +33,7 @@ setup(
     packages=["gtrending"],
     include_package_data=True,
     install_requires=[
-        "requests>=2.22.0",
+        "requests>=2.22.0,<3.0.0",
     ],
     entry_points={"console_scripts": ["gtrending=gtrending.cli:main"]},
 )
