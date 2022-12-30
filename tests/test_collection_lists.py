@@ -55,7 +55,11 @@ def test_spoken_languages_list():
         assert "code" in i.keys()
         assert "name" in i.keys()
         assert isinstance(i["code"], str)
-        assert isinstance(i["name"], str)
+        assert isinstance(i["name"], list)
+        assert i["name"]
+        for name in i["name"]:
+            assert isinstance(name, str)
+            assert not name.islower()
 
 
 def test_spoken_languages_dict():

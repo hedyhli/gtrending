@@ -86,6 +86,8 @@ def fetch_repos(
             repo["forks"] = 0  # pragma: no cover
         if not repo.get("stars"):
             repo["stars"] = 0  # pragma: no cover
+        if not repo.get("currentPeriodStars"):
+            repo["currentPeriodStars"] = 0  # pragma: no cover
 
         repos.append(repo)
     return repos

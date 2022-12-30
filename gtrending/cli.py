@@ -138,7 +138,7 @@ def show_langs(args: argparse.Namespace):
         print_json(languages)
     else:
         for entry in languages_list():
-            print(entry["name"])
+            print(entry["param"])
 
 
 def show_spoken_langs(args: argparse.Namespace):
@@ -148,7 +148,7 @@ def show_spoken_langs(args: argparse.Namespace):
         print_json(spoken_languages)
     else:
         for entry in spoken_languages_list():
-            print(entry["code"], entry["name"])
+            print(entry["code"])
 
 
 def show_repos(args: argparse.Namespace):
