@@ -40,11 +40,19 @@ def fetch_repos(
 
         Likewise, language argument must be the parameter value ("common-lisp"
         not "Common Lisp"). To convert the name to param, use
-        convert_language_name_to_param()
-
+        convert_language_name_to_param().
 
     Returns:
-        A list of dictionary containing information for the trending repositories found.
+        list(dict): A list of dictionaries containing information for each trending repository found
+
+    Raises:
+        ValueError: When any of the arguments are invalid
+
+    Examples:
+        ::
+            fetch_repos()
+            fetch_repos(language="python")
+            fetch_repos("C", "zh", "monthly")
     """
 
     # or has lower precedence than and
@@ -101,7 +109,16 @@ def fetch_developers(language: str = "", since: str = "daily") -> List[dict]:
         since (str, optional): The time range, choose from [daily, weekly, monthly]. Defaults to "daily"
 
     Returns:
-        A list of dictionary containing information for the trending developers found.
+        list(dict): A list of dictionaries containing information for each trending developer found
+
+    Raises:
+        ValueError: When any of the arguments are invalid
+
+    Examples:
+        ::
+            fetch_developers()
+            fetch_repos(language="python")
+            fetch_repos("C", since="monthly")
     """
 
     if not isinstance(language, str) or language and not check_language(language):

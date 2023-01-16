@@ -17,14 +17,13 @@ sys.path.insert(0, os.path.abspath(".."))
 
 
 # -- Project information -----------------------------------------------------
+from gtrending import __version__, URL, AUTHOR
 
 project = "gtrending"
-copyright = "2020-2022 hedy"
-author = "hedy"
+author = AUTHOR
+copyright = "2020-2023 " + author
 
 # The full version, including alpha/beta/rc tags
-from gtrending import __version__
-
 release = __version__
 
 
@@ -44,17 +43,29 @@ master_doc = "index"
 
 # --- theme ---
 
-import sphinx_rtd_theme
-
-
 # Register the theme as an extension to generate a sitemap.xml
 extensions = [
     "sphinx.ext.autodoc",
-    "sphinx_rtd_theme",
+    "sphinx.ext.napoleon",
+    "sphinx.ext.doctest",
+    "sphinx_copybutton",
 ]
+doctest_global_setup = "from gtrending import *"
 
-html_theme = "sphinx_rtd_theme"
+html_theme = "furo"
+# "edit" button
+html_theme_options = {
+    "source_repository": "https://github.com/hedyhli/gtrending",
+    "source_branch": "master",
+    "source_directory": "docs/",
+}
+html_show_search_summary = True
+html_title = f"{project} {release}"
 
+# copy button
+# don't copy the python REPL and terminal shell prompt
+copybutton_prompt_text = r">>> |\.\.\. |\$ "
+copybutton_prompt_is_regexp = True
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ["_templates"]
