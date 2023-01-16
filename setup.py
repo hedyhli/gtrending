@@ -2,7 +2,7 @@ import io
 
 from setuptools import setup
 
-from gtrending import __version__, URL, AUTHOR, AUTHOR_EMAIL
+from gtrending import __version__, __url__, __author__, __author_email__
 
 with io.open("README.md", "rt", encoding="utf8") as f:
     LONG_DESC = f.read()
@@ -17,9 +17,9 @@ setup(
     long_description=LONG_DESC,
     long_description_content_type="text/markdown",
     python_requires=">=3.6",
-    url="https://github.com/hedyhli/gtrending",
-    author=AUTHOR,
-    author_email=AUTHOR_EMAIL,
+    url=__url__,
+    author=__author__,
+    author_email=__author_email__,
     license="MIT",
     classifiers=[
         "License :: OSI Approved :: MIT License",

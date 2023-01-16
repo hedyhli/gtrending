@@ -17,10 +17,10 @@ sys.path.insert(0, os.path.abspath(".."))
 
 
 # -- Project information -----------------------------------------------------
-from gtrending import __version__, URL, AUTHOR
+from gtrending import __version__, __url__, __author__
 
 project = "gtrending"
-author = AUTHOR
+author = __author__
 copyright = "2020-2023 " + author
 
 # The full version, including alpha/beta/rc tags

@@ -22,7 +22,6 @@ from .paramutils import (
 )
 
 __version__ = "0.3.6"
-
-URL = "https://github.com/hedyhli/gtrending"
-AUTHOR = "hedy"
-AUTHOR_EMAIL = "hedy@tilde.cafe"
+__url__ = "https://github.com/hedyhli/gtrending"
+__author__ = "hedyhli"
+__author_email__ = "hedy@tilde.cafe"
