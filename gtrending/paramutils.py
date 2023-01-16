@@ -1,4 +1,6 @@
-from urllib.parse import quote as urlquote, unquote as urlunquote
+"""Parameter utility functions"""
+
+from urllib.parse import unquote as urlunquote
 from typing import List
 
 import requests
@@ -212,10 +214,10 @@ def languages_dict() -> dict:
     Returns:
         dict: ``param: name`` for each language
     """
-    sl = {}
+    lang_dict = {}
     for entry in languages_list():
-        sl[entry.get("param")] = entry.get("name")
-    return sl
+        lang_dict[entry.get("param")] = entry.get("name")
+    return lang_dict
 
 
 def languages_params() -> List[str]:
@@ -229,8 +231,7 @@ def languages_params() -> List[str]:
     Returns:
         list(str): List of languages' params as strings
     """
-    ld = languages_dict()
-    return list(ld.keys())
+    return list(languages_dict().keys())
 
 
 def languages_names() -> list:
@@ -244,10 +245,9 @@ def languages_names() -> list:
     Returns:
         list(str): List of capitalized names as strings
     """
-    ld = languages_dict()
     names = []
-    for param in ld.keys():
-        names.append(ld[param])
+    for val in languages_dict().values():
+        names.append(val)
     return names
 
 
@@ -294,10 +294,10 @@ def spoken_languages_dict() -> dict:
     Returns:
         dict: ``code: [names, ...]`` for each spoken language
     """
-    sl = {}
+    sl_d = {}
     for entry in spoken_languages_list():
-        sl[entry.get("code")] = entry.get("name")
-    return sl
+        sl_d[entry.get("code")] = entry.get("name")
+    return sl_d
 
 
 def spoken_languages_codes() -> list:
@@ -310,8 +310,8 @@ def spoken_languages_codes() -> list:
     Returns:
         list(str): 2-character codes as strings
     """
-    sl = spoken_languages_dict()
-    return list(sl.keys())
+    sl_d = spoken_languages_dict()
+    return list(sl_d.keys())
 
 
 def spoken_languages_names() -> List[str]:
@@ -324,10 +324,10 @@ def spoken_languages_names() -> List[str]:
     Returns:
         list(str): Capitalized spoken language names as strings
     """
-    sl = spoken_languages_dict()
+    sl_d = spoken_languages_dict()
     names = []
-    for code in sl.keys():
-        names.extend(sl[code])
+    for name in sl_d.values():
+        names.extend(name)
     return names
 
 
@@ -348,16 +348,16 @@ def convert_spoken_language_name_to_code(sl_name: str) -> str:
     Returns:
         str: The corresponding spoken_language code
     """
-    sl = spoken_languages_dict()
-    for code in sl.keys():
-        if sl_name in sl[code]:
+    sl_d = spoken_languages_dict()
+    for code, names in sl_d.items():
+        if sl_name in names:
             return code
 
     # TODO: is ValueError better?
     return ""
 
 
-def check_spoken_language_name(sl: str) -> bool:
+def check_spoken_language_name(spoke_language: str) -> bool:
     """Check if the spoken language name exists, case-insensitive.
 
     Returns false for falsey values.
@@ -378,13 +378,13 @@ def check_spoken_language_name(sl: str) -> bool:
     Returns:
         bool: True for valid spoken language name, False otherwise
     """
-    if not sl:
+    if not spoke_language:
         return False
-    sl = sl.lower()
-    return sl in [i.lower() for i in spoken_languages_names()]
+    spoken_language = spoke_language.lower()
+    return spoken_language in [i.lower() for i in spoken_languages_names()]
 
 
-def check_spoken_language_code(sl: str) -> bool:
+def check_spoken_language_code(code: str) -> bool:
     """Check if the spoken language code exists, case-insensitive.
 
     Returns false for falsey values.
@@ -405,13 +405,13 @@ def check_spoken_language_code(sl: str) -> bool:
     Returns:
         bool: True for valid spoken language code, False otherwise.
     """
-    if not sl:
+    if not code:
         return False
-    sl = sl.lower()
-    return sl in spoken_languages_codes()
+    code = code.lower()
+    return code in spoken_languages_codes()
 
 
-def check_spoken_language(sl: str) -> bool:
+def check_spoken_language(spoken_language: str) -> bool:
     """Check if the spoken language code or name exists.
 
     Returns false for falsey values
@@ -432,9 +432,11 @@ def check_spoken_language(sl: str) -> bool:
     Returns:
         bool: True for valid spoken language, False otherwise
     """
-    if not sl:
+    if not spoken_language:
         return False
-    return check_spoken_language_code(sl) or check_spoken_language_name(sl)
+    return check_spoken_language_code(spoken_language) or check_spoken_language_name(
+        spoken_language
+    )
 
 
 def check_since(since: str) -> bool:

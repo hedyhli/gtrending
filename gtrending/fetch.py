@@ -9,15 +9,9 @@ import requests
 
 from .paramutils import (
     check_language,
-    spoken_languages_dict,
-    spoken_languages_codes,
-    spoken_languages_names,
-    convert_spoken_language_name_to_code,
-    convert_language_name_to_param,
-    check_spoken_language_name,
     check_spoken_language_code,
-    check_spoken_language,
     check_since,
+    convert_language_name_to_param,
 )
 
 
@@ -31,7 +25,8 @@ def fetch_repos(
     Parameters:
         language (str, optional):  Filtering by language, eg: python, common-lisp
         spoken_language_code (str, optional): The spoken language, eg: en for english
-        since (str, optional): The time range, choose from: [daily, weekly, monthly]. Defaults to "daily"
+        since (str, optional): The time range, choose from: [daily, weekly, monthly].
+        Defaults to "daily".
 
     Note:
         spoken_language_code argument must be the language code ("en" and not
@@ -76,7 +71,10 @@ def fetch_repos(
         )
     since = since or "daily"
 
-    url: str = f"https://gtrend.yapie.me/repositories?language={language_param}&since={since}&spoken_language_code={spoken_language_code}"
+    url: str = (
+        "https://gtrend.yapie.me/repositories?"
+        f"language={language_param}&since={since}&spoken_language_code={spoken_language_code}"
+    )
 
     res = requests.get(url).json()
     repos = []
@@ -107,7 +105,8 @@ def fetch_developers(language: str = "", since: str = "daily") -> List[dict]:
 
     Parameters:
         language (str, optional): The programming language, eg: python
-        since (str, optional): The time range, choose from [daily, weekly, monthly]. Defaults to "daily"
+        since (str, optional): The time range, choose from [daily, weekly, monthly].
+        Defaults to "daily".
 
     Returns:
         list(dict): A list of dictionaries containing information for each trending developer found
