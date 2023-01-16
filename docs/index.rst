@@ -66,4 +66,4 @@ Indices and tables
 
    fetch/index
    paramutils/index
-   API/gtrending.rst
+   API/index

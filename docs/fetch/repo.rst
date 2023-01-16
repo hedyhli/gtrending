@@ -23,12 +23,17 @@ The default arguments are:
 
 The following are all valid examples::
 
+    # Any language, any spoken language, trending today
     fetch_repos()
 
+    # JavaScript, any spoken language, trending today
     fetch_repos("javascript")
+    # Chinese, any language, trending today
     fetch_repos(spoken_language_code="zh")
+    # Any language, any spoken language, trending this month
     fetch_repos(since="monthly")
 
+    # JavaScript, Chinese, trending this month
     fetch_repos("javascript", "zh", "monthly")
 
 
@@ -36,6 +41,7 @@ Example return values
 ---------------------
 ::
 
+    >>> fetch_repos()
     [
       {
         "author": "ShoufaChen",
@@ -108,8 +114,8 @@ trending period - as specified by the ``since`` argument.
 Argument validation
 -------------------
 
-Parameters ``language`` and ``spoken_language_code`` only accept valid values.
-**ValueError** is thrown for invalid values.
+Parameters ``language`` and ``spoken_language_code`` only accept values in the
+correct format. **ValueError** is thrown for invalid values.
 
 Both parameters are case-insensitive.
 
@@ -118,7 +124,9 @@ Language
 
 Valid values must be one of the list of languages, returned from ``languages_params()``.
 
-To check if a value is valid before passing to ``fetch_repos()``, use ``check_language(language)``::
+To check if a value is valid before passing to ``fetch_repos()``, use ``check_language(language)``:
+
+.. doctest::
 
     >>> check_language("python")
     True
@@ -129,23 +137,24 @@ To check if a value is valid before passing to ``fetch_repos()``, use ``check_la
     >>> check_language("")
     False
 
-See the :doc:`ParamUtils module <../paramutils/index>` for usage details on parameter
-validation functions.
+
+See the :doc:`ParamUtils module <../paramutils/index>` for usage details on
+other parameter validation functions.
 
 
 Spoken language code
 ^^^^^^^^^^^^^^^^^^^^
 
-Valid values must be one of the list of spoken language codes, returned from
-``spoken_languages_codes()``.
+Valid values must be one of the list of spoken language **codes**, returned
+from ``spoken_languages_codes()``.
 
 .. note::
-   This is the spoken language code, as in "en"/"es"/"ko", and not the spoken
-   language name itself (such as "english").
+   This is the spoken language **code**, as in "en"/"es"/"ko", and not the
+   spoken language name itself (such as "english").
 
 
 To check if a value is valid before passing to ``fetch_repos()``, use
-``check_spoken_language_code(code)``
+``check_spoken_language_code(code)``:
 
 .. doctest::
 

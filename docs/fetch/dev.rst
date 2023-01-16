@@ -2,7 +2,8 @@ Trending Developers
 ===================
 
 
-The ``fetch_developers()`` function can be used for fetching trending developers.
+The ``fetch_developers()`` function can be used for fetching trending
+developers.
 
 A **list of dictionaries** containing metadata about the trending developers as
 well as the repository they are trending for is returned.
@@ -12,7 +13,8 @@ Parameters
 ----------
 
 - ``language`` - the programming language to search for (eg: python)
-- ``since`` - the date range for the search period. Either one of: **daily**, **weekly**, or **monthly**
+- ``since`` - the date range for the search period. Either one of: **daily**,
+  **weekly**, or **monthly**
 
 .. note:: All parameters are case-insensitive
 
@@ -25,12 +27,16 @@ The following are all valid examples:
 
 .. testcode::
 
+    # Any language, trending today
     fetch_developers()
 
+    # Python, trending today
     fetch_developers("python")
 
+    # Any language, trending this week
     fetch_developers(since="weekly")
 
+    # Rust, trending this month
     fetch_developers("rust", "monthly")
 
 
@@ -38,6 +44,7 @@ Example return values
 ---------------------
 ::
 
+    >>> fetch_developers()
     [
       {
         "username": "stedolan",
@@ -62,20 +69,23 @@ Example return values
           "description": "\u269b\ufe0f \ud83d\udcfa Projects from the \u201cCan it be done in React Native?\u201d YouTube series",
           "url": "https://github.com/wcandillon/can-it-be-done-in-react-native"
         }
-      }
+      },
+      ...
     ]
 
 
 Argument validation
 -------------------
 
-The ``language`` parameter raises **ValueError** for invalid values.
+The ``language`` parameter raises **ValueError** for invalid language values or
+non-existent languages.
 
 
 Language
 ^^^^^^^^
 
-Valid values must be one of the list of languages, returned from ``languages_params()``.
+Valid values must be one of the list of languages, returned from
+``languages_params()``.
 
 To check if a value is valid before passing to ``fetch_developers()``, use
 ``check_language(language)``
@@ -91,6 +101,7 @@ To check if a value is valid before passing to ``fetch_developers()``, use
     >>> check_language("")
     False
 
-See the :doc:`ParamUtils module <../paramutils/index>` for usage details on parameter
-validation functions.
+See the :doc:`ParamUtils module <../paramutils/index>` for usage details on
+parameter validation functions such as conversion between language argument
+formats, and validating language arguments.
 

@@ -50,6 +50,7 @@ def fetch_repos(
 
     Examples:
         ::
+
             fetch_repos()
             fetch_repos(language="python")
             fetch_repos("C", "zh", "monthly")
@@ -116,6 +117,7 @@ def fetch_developers(language: str = "", since: str = "daily") -> List[dict]:
 
     Examples:
         ::
+
             fetch_developers()
             fetch_repos(language="python")
             fetch_repos("C", since="monthly")
