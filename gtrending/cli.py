@@ -1,3 +1,5 @@
+"""Gtrending CLI module"""
+
 import argparse
 import json
 

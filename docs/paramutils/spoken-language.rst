@@ -1,2 +1,0 @@
-Spoken language parameter
-=========================

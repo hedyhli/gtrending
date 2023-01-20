@@ -3,7 +3,7 @@ Fetch trending repositories and developers using github-trending-api
 """
 
 from urllib.parse import quote as urlquote
-from typing import List
+from typing import List, Optional
 
 import requests
 
@@ -16,9 +16,9 @@ from .paramutils import (
 
 
 def fetch_repos(
-    language: str = "",
-    spoken_language_code: str = "",
-    since: str = "daily",
+    language: Optional[str] = "",
+    spoken_language_code: Optional[str] = "",
+    since: Optional[str] = "daily",
 ) -> List[dict]:
     """Fetch trending repositories on GitHub.
 
@@ -52,12 +52,12 @@ def fetch_repos(
     """
 
     # or has lower precedence than and
-    if not isinstance(language, str) or language and not check_language(language):
+    if not isinstance(language, (str, type(None))) or language and not check_language(language):
         raise ValueError(f"Invalid language argument: {language}")
-    language_param = urlquote(language)
+    language_param = urlquote(language, safe="+") if language else ""
 
     if (
-        not isinstance(spoken_language_code, str)
+        not isinstance(spoken_language_code, (str, type(None)))
         or spoken_language_code
         and not check_spoken_language_code(spoken_language_code)
     ):
@@ -65,7 +65,7 @@ def fetch_repos(
             f"Invalid spoken_language_code argument: {spoken_language_code}"
         )
 
-    if not isinstance(since, str) or since and not check_since(since):
+    if not isinstance(since, (str, type(None))) or since and not check_since(since):
         raise ValueError(
             f"Invalid since argument (must be 'daily', 'weekly' or 'monthly'): {since}"
         )
@@ -100,7 +100,7 @@ def fetch_repos(
     return repos
 
 
-def fetch_developers(language: str = "", since: str = "daily") -> List[dict]:
+def fetch_developers(language: Optional[str] = "", since: Optional[str] = "daily") -> List[dict]:
     """Fetch trending developers on GitHub.
 
     Parameters:
@@ -122,11 +122,11 @@ def fetch_developers(language: str = "", since: str = "daily") -> List[dict]:
             fetch_repos("C", since="monthly")
     """
 
-    if not isinstance(language, str) or language and not check_language(language):
+    if not isinstance(language, (str, type(None))) or language and not check_language(language):
         raise ValueError(f"Invalid language argument: {language}")
-    language_param = urlquote(language, safe="+")
+    language_param = urlquote(language, safe="+") if language else ""
 
-    if not isinstance(since, str) or since and not check_since(since):
+    if not isinstance(since, (str, type(None))) or since and not check_since(since):
         raise ValueError(
             f"Invalid since argument (must be 'daily', 'weekly' or 'monthly'): {since}"
         )
