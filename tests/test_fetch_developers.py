@@ -7,7 +7,9 @@ def test_all(developer_assertion):
     developer_assertion(res)
 
 
-@pytest.mark.parametrize("language", ["python", "Vim-Script", "c++", "Common-Lisp", "", None])
+@pytest.mark.parametrize(
+    "language", ["python", "Vim-Script", "c++", "Common-Lisp", "", None]
+)
 def test_language(developer_assertion, language):
     res = fetch_developers(language=language)
     developer_assertion(res)

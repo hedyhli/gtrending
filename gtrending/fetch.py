@@ -52,7 +52,11 @@ def fetch_repos(
     """
 
     # or has lower precedence than and
-    if not isinstance(language, (str, type(None))) or language and not check_language(language):
+    if (
+        not isinstance(language, (str, type(None)))
+        or language
+        and not check_language(language)
+    ):
         raise ValueError(f"Invalid language argument: {language}")
     language_param = urlquote(language, safe="+") if language else ""
 
@@ -100,7 +104,9 @@ def fetch_repos(
     return repos
 
 
-def fetch_developers(language: Optional[str] = "", since: Optional[str] = "daily") -> List[dict]:
+def fetch_developers(
+    language: Optional[str] = "", since: Optional[str] = "daily"
+) -> List[dict]:
     """Fetch trending developers on GitHub.
 
     Parameters:
@@ -122,7 +128,11 @@ def fetch_developers(language: Optional[str] = "", since: Optional[str] = "daily
             fetch_repos("C", since="monthly")
     """
 
-    if not isinstance(language, (str, type(None))) or language and not check_language(language):
+    if (
+        not isinstance(language, (str, type(None)))
+        or language
+        and not check_language(language)
+    ):
         raise ValueError(f"Invalid language argument: {language}")
     language_param = urlquote(language, safe="+") if language else ""
 

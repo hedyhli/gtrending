@@ -2,6 +2,7 @@ import pytest
 import shlex
 from gtrending import cli, convert_language_name_to_param
 
+
 # pytest shared functions: https://stackoverflow.com/a/42156088
 def repos_basic_assertions(repos, language=""):
     for repo in repos:

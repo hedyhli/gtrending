@@ -69,7 +69,6 @@ def test_repr_repo():
 
 
 def test_repr_developer_without_sponsor(example_developer):
-
     string = cli.repr_developer(example_developer)
     assert string == textwrap.dedent(
         """\
