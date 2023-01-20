@@ -1,5 +1,5 @@
 test:
-	python3 -m pytest --cov-report term-missing --cov=gtrending tests/ -vv --doctest-modules gtrending
+	python3 -m pytest --cov-report term-missing --cov=gtrending --cov-report=xml:./coverage.xml tests/ -vv --doctest-modules gtrending
 doctest:
 	cd docs
 	sphinx-build -b doctest docs docs/_build
