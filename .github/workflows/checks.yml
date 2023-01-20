@@ -9,7 +9,7 @@ on:
 jobs:
   lint:
     if: "! contains(toJSON(github.event.commits.*.message), '[skip ci]')"
-    runs-on: debian-latest
+    runs-on: ubuntu-latest
     strategy:
       matrix:
         python-version: [3.7, 3.8, 3.9, '3.10', '3.11']
