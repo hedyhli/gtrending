@@ -31,9 +31,8 @@ The above examples will fetch all the trending Python projects on GitHub
 trending today.
 
 
-
-
 ## Requirements
+
 * Python 3.6 or higher
 
 
@@ -146,6 +145,10 @@ Returns:
 
 ---
 
+For more API usage details, go read the docs!
+
+---
+
 ## CLI
 
 Usage:
@@ -157,16 +160,16 @@ gtrending [--json] <command> [<args>]
 
 ```sh
 # Sort repos by stars
-gtrending repos --sort stars       
+gtrending repos --sort stars
 
 # See only python repositories
-gtrending repos --language python  
+gtrending repos --language python
 
 # See weekly trending repos
-gtrending repos --since weekly --sort forks  
+gtrending repos --since weekly --sort forks
 
 # Print output in json format (-j/--json)
-gtrending repos --json             
+gtrending repos --json
 
 # See trending rust developers
 gtrending developers --language rust
@@ -176,22 +179,28 @@ gtrending langs
 
 # See available spoken languages
 gtrending spoken-langs
+```
 
-
+Getting help
+```sh
 # Help commands
 gtrending --help
 # or see available arguments for specific sub-command
 gtrending developers --help
+```
 
 
 
-## Usage with jq
+Usage with jq
 
+```sh
 # Show only fullname (user/repo) and total stars for each repo
-gtrending repos --json | jq '[.[] | {fullname, stars}]'  # Still a json output
+# Still a json output
+gtrending repos --json | jq '[.[] | {fullname, stars}]'
 
 # Show only fullname for repos
-gtrending repos --json | jq '.[] | .fullname'            # Not a json anymore
+# Not a json anymore
+gtrending repos --json | jq '.[] | .fullname'
 
 # Similarly for trending developers
 # Show only username and repository url
@@ -201,10 +210,8 @@ gtrending developers -j | jq '[ .[] | {username, repo: .repo_url} ]'
 gtrending developers -j | jq '[ map(select(.sponsorUrl != null)) | .[] | {username, repo_name: .repo.name} ]'
 ```
 
-
-
 ## Uses
 
-* [github-trending-api](https://github.com/huchenme/github-trending-api) --
-  JavaScript library with API
-* requests -- Making API requests
+* [github-trending-api](https://github.com/huchenme/github-trending-api) —
+  JavaScript library with web API
+* requests — Making API requests
