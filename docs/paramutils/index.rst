@@ -38,7 +38,7 @@ The full name of both of these parameters, are named **"name"**.
    * - Language param
      - Value used in :doc:`fetch <../fetch/index>` functions
      - *"common-lisp"*
-   * - Spoken langauge name
+   * - Spoken language name
      - Full name of spoken language
      - "Italian"
    * - Spoken language code
