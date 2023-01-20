@@ -30,10 +30,14 @@ gtrending repos --language python
 The above examples will fetch all the trending Python projects on GitHub
 trending today.
 
+[Skip to more CLI examples](#cli)
+
 
 ## Requirements
 
 * Python 3.6 or higher
+
+The only python package dependency is requests.
 
 
 ## Installation
@@ -54,13 +58,11 @@ poetry add gtrending
 You get the idea.
 
 
-## API
+## Usage
 
-Documentation: [Read the docs](https://gtrending.readthedocs.io/en/latest/API.html)
+Documentation: [Read the docs](https://gtrending.readthedocs.io/)
 
 ### `fetch_repos()`
-
-> Fetch trending repositories on GitHub.
 
 Parameters:
 * `language (str, optional)`:  Filtering by language, eg: python
@@ -69,79 +71,195 @@ Parameters:
 * `since (str, optional)`: The time range, choose from: [daily, weekly,
   monthly]. Defaults to "daily"
 
-Returns:
-> A list of dictionaries containing information for the trending repositories
-> found.
+Example:
+```python-console
+>>> fetch_repos(language="rust", since="weekly")
+[
+  {
+    'author': 'iced-rs',
+    'avatar': 'https://github.com/iced-rs.png',
+    'builtBy': [
+      {
+        'avatar': 'https://avatars.githubusercontent.com/u/518289',
+        'href': 'https://github.com/hecrj',
+        'username': 'hecrj'
+      },
+      {
+        'avatar': 'https://avatars.githubusercontent.com/u/10239377',
+        'href': 'https://github.com/tarkah',
+        'username': 'tarkah'
+      },
+      {
+        'avatar': 'https://avatars.githubusercontent.com/u/30560559',
+        'href': 'https://github.com/derezzedex',
+        'username': 'derezzedex'
+      },
+      {
+        'avatar': 'https://avatars.githubusercontent.com/u/1562417',
+        'href': 'https://github.com/clarkmoody',
+        'username': 'clarkmoody'
+      },
+      {
+        'avatar': 'https://avatars.githubusercontent.com/u/4241774',
+        'href': 'https://github.com/bungoboingo',
+        'username': 'bungoboingo'
+      }
+    ],
+    'currentPeriodStars': 82,
+    'description': 'A cross-platform GUI library for Rust, inspired by Elm',
+    'forks': 776,
+    'fullname': 'iced-rs/iced',
+    'language': 'Rust',
+    'languageColor': '#dea584',
+    'name': 'iced',
+    'stars': 17647,
+    'url': 'https://github.com/iced-rs/iced'
+  },
+  ...
+]
+```
 
-
-<br>
 
 ### `fetch_developers()`
-
-> Fetch trending developers on GitHub.
 
 Parameters:
 * `language (str, optional)`: The programming language, eg: python
 * `since (str, optional)`: The time range, choose from [daily, weekly,
   monthly]. Defaults to "daily"
 
-Returns:
-> A list of dictionaries containing information for the trending developers
-> found.
+Example:
+```python-console
+>>> fetch_developers(language="typescript", since="weekly")
+[
+  {
+    'avatar': 'https://avatars.githubusercontent.com/u/2230985',
+    'name': 'Connor Peet',
+    'repo': {
+      'description': 'A resilience and transient-fault-handling library '
+                     'that allows developers to express policies such as '
+                     'Backoff, Retry, Circuit Breaker, Tim…',
+      'name': 'cockatiel',
+      'url': 'https://github.com/connor4312/cockatiel'},
+      'sponsorUrl': None,
+      'url': 'https://github.com/connor4312',
+      'username': 'connor4312'
+  },
+  {
+    'avatar': 'https://avatars.githubusercontent.com/u/13049130',
+    'name': 'Robert Soriano',
+    'repo': {'description': 'End-to-end typesafe APIs in Nuxt applications.',
+      'name': 'trpc-nuxt',
+      'url': 'https://github.com/wobsoriano/trpc-nuxt'},
+      'sponsorUrl': None,
+      'url': 'https://github.com/wobsoriano',
+      'username': 'wobsoriano'
+  },
+  ...
+]
+```
 
 <br>
 
 ### `languages_list()`
 
-> Fetch languages
+A list of dictionaries with each name to its parameter value:
 
-Returns:
-> A list of dictionaries containing programming languages.
+```python-console
+>>> languages_list()
+[
+  ...
+  {
+    "name": "Elm",
+    "param": "elm"
+  },
+  {
+    "name": "Emacs Lisp",
+    "param": "emacs-lisp"
+  },
+  {
+    "name": "EmberScript",
+    "param": "emberscript"
+  },
+  {
+    "name": "EQ",
+    "param": "eq"
+  },
+  ...
+]
+```
 
 <br>
 
 ### `spoken_languages_list()`
 
-> Fetch spoken languages.
-
-Returns:
-> A list of spoken languages.
+```python-console
+>>> spoken_languages_list()
+[
+  ...
+  {
+    "code": "it"
+    "name": [ "Italian" ],
+  },
+  {
+    "code": "iu"
+    "name": [ "Inuktitut" ],
+  },
+  {
+    "code": "ja"
+    "name": [ "Japanese" ],
+  },
+  {
+    "code": "jv"
+    "name": [ "Javanese" ],
+  },
+  {
+    "code": "kl"
+    "name": [ "Kalaallisut", "Greenlandic" ],
+  },
+  ...
+]
+```
 
 <br>
 
 ### `check_language()`
 
-> Check if the language exists.
+Validate the language parameter:
 
-Parameters:
-* `language (str)`:  The language, eg: python.
-
-Returns:
-> A boolean value. True for valid language, False otherwise.
+```python-console
+>>> check_language("python")
+True
+>>> check_language("Ruby")
+True
+>>> check_language("TeaScript")  # Does not exist
+False
+>>> check_language("")
+False
+```
 
 <br>
 
-### `check_spoken_language()`
+### `check_spoken_language_code()`
 
-> Check if the spoken language exists.
+Validate the spoken language code parameter:
 
-Parameters:
-* `spoken_language_code (str)`: The spoken language, eg: English, or en, for English.
-
-Returns:
-> A boolean value. True for valid spoken language, False otherwise.
+```python-console
+>>> check_spoken_language_code("es")
+True
+>>> check_spoken_language_code("FR")
+True
+>>> check_spoken_language_code("ZZ")  # Does not exist
+False
+>>> check_spoken_language_code("")
+False
+```
 
 <br>
 
 ### `check_since()`
 
-> Check if the time range is correct.
-
-Parameters:
-* `since (str)`:  The time range.
-
-Returns:
-> A boolean value. True for valid parameter, False otherwise.
+Check if the time range is correct — it must be daily, weekly, or monthly —
+case-insensitive.
 
 ---
 
@@ -156,7 +274,7 @@ Usage:
 gtrending [--json] <command> [<args>]
 ```
 
-### Quick Examples
+### Examples
 
 ```sh
 # Sort repos by stars
@@ -181,7 +299,7 @@ gtrending langs
 gtrending spoken-langs
 ```
 
-Getting help
+**Getting help**
 ```sh
 # Help commands
 gtrending --help
@@ -189,10 +307,7 @@ gtrending --help
 gtrending developers --help
 ```
 
-
-
-Usage with jq
-
+**Usage with jq**
 ```sh
 # Show only fullname (user/repo) and total stars for each repo
 # Still a json output
