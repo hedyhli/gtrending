@@ -53,5 +53,5 @@ jobs:
       - name: Sphinx doctest
         run: |
           cd docs
-          pip install -r requirements.txt
+          if [[ $(python -V) =~ '^Python 3.7.?' ]]; then; pip install -r requirements_37.txt; else; pip install -r requirements.txt; fi
           make doctest
