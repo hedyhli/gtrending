@@ -64,7 +64,7 @@ Documentation: [Read the docs (online)](https://gtrending.readthedocs.io/)
 
 You can also download the PDF documentation build from the [latest
 release](https://github.com/hedyhli/gtrending/releases) or get it from [read the
-docs' dowloads](https://readthedocs.org/projects/gtrending/downloads/).
+docs' downloads](https://readthedocs.org/projects/gtrending/downloads/).
 
 
 ### `fetch_repos()`
