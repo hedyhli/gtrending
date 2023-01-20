@@ -29,3 +29,9 @@ jobs:
       run: |
         python setup.py sdist bdist_wheel
         twine upload dist/*
+    - name: Download PDF
+      run: wget https://gtrending.readthedocs.io/_/downloads/en/latest/pdf/ -O gtrending_docs.pdf
+    - name: Upload release asset
+      uses: softprops/action-gh-release@v1
+      with:
+        files: gtrending_docs.pdf
