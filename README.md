@@ -144,20 +144,23 @@ Example:
                      'that allows developers to express policies such as '
                      'Backoff, Retry, Circuit Breaker, Tim…',
       'name': 'cockatiel',
-      'url': 'https://github.com/connor4312/cockatiel'},
-      'sponsorUrl': None,
-      'url': 'https://github.com/connor4312',
-      'username': 'connor4312'
+      'url': 'https://github.com/connor4312/cockatiel'
+    },
+    'sponsorUrl': None,
+    'url': 'https://github.com/connor4312',
+    'username': 'connor4312'
   },
   {
     'avatar': 'https://avatars.githubusercontent.com/u/13049130',
     'name': 'Robert Soriano',
-    'repo': {'description': 'End-to-end typesafe APIs in Nuxt applications.',
+    'repo': {
+      'description': 'End-to-end typesafe APIs in Nuxt applications.',
       'name': 'trpc-nuxt',
-      'url': 'https://github.com/wobsoriano/trpc-nuxt'},
-      'sponsorUrl': None,
-      'url': 'https://github.com/wobsoriano',
-      'username': 'wobsoriano'
+      'url': 'https://github.com/wobsoriano/trpc-nuxt'
+    },
+    'sponsorUrl': None,
+    'url': 'https://github.com/wobsoriano',
+    'username': 'wobsoriano'
   },
   ...
 ]
