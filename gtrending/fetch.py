@@ -26,7 +26,7 @@ def fetch_repos(
         language (str, optional):  Filtering by language, eg: python, common-lisp
         spoken_language_code (str, optional): The spoken language, eg: en for english
         since (str, optional): The time range, choose from: [daily, weekly, monthly].
-        Defaults to "daily".
+                               Defaults to "daily".
 
     Note:
         spoken_language_code argument must be the language code ("en" and not
@@ -112,7 +112,7 @@ def fetch_developers(
     Parameters:
         language (str, optional): The programming language, eg: python
         since (str, optional): The time range, choose from [daily, weekly, monthly].
-        Defaults to "daily".
+                               Defaults to "daily".
 
     Returns:
         list(dict): A list of dictionaries containing information for each trending developer found
