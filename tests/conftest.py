@@ -44,7 +44,7 @@ def developers_basic_assertions(devs, sponsorable=False):
                 == "https://github.com/" + developer["username"] + "/" + repo["name"]
             )
         if sponsorable:
-            assert developer['sponsorUrl']
+            assert developer["sponsorUrl"]
 
 
 @pytest.fixture

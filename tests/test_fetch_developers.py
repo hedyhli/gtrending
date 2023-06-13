@@ -20,9 +20,11 @@ def test_since(developer_assertion, since):
     res = fetch_developers(since=since)
     developer_assertion(res)
 
+
 def test_sponsorable(developer_assertion):
     res = fetch_developers(sponsorable=True)
     developer_assertion(res, sponsorable=True)
+
 
 @pytest.mark.parametrize(
     "language", [tuple(), "language", "C%2B%2B", "HTML%2BDjango", "py"]
@@ -38,6 +40,7 @@ def test_since_error(since):
     with pytest.raises(ValueError) as excinfo:
         fetch_developers(since=since)
     excinfo.match("Invalid since argument")
+
 
 @pytest.mark.parametrize("sp", [[], "yes", "", 0, 1])
 def test_sponsorable_error(sp):

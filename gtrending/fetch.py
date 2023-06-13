@@ -99,7 +99,9 @@ def fetch_repos(
 
 
 def fetch_developers(
-    language: Optional[str] = "", since: Optional[str] = "daily", sponsorable: Optional[bool] = False
+    language: Optional[str] = "",
+    since: Optional[str] = "daily",
+    sponsorable: Optional[bool] = False,
 ) -> List[dict]:
     """Fetch trending developers on GitHub.
 

@@ -45,10 +45,10 @@ def languages_list() -> List[dict]:
     """
     # https://stackoverflow.com/a/20885799  for Python >=3.7
     try:
-        file = (pkg_resources.files(_data) / 'languages.json')
+        file = pkg_resources.files(_data) / "languages.json"
         f = file.open()
     except AttributeError:
-        f = pkg_resources.open_text(_data, 'languages.json')
+        f = pkg_resources.open_text(_data, "languages.json")
     res = json.load(f)
     f.close()
     return res
@@ -88,10 +88,10 @@ def spoken_languages_list() -> List[dict]:
         list(dict): A list dictionaries of spoken languages, mapping the code to the name
     """
     try:
-        file = (pkg_resources.files(_data) / 'spoken_languages.json')
+        file = pkg_resources.files(_data) / "spoken_languages.json"
         f = file.open()
     except AttributeError:
-        f = pkg_resources.open_text(_data, 'spoken_languages.json')
+        f = pkg_resources.open_text(_data, "spoken_languages.json")
     res = json.load(f)
     f.close()
     return res
