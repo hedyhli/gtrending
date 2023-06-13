@@ -1,0 +1,28 @@
+[tool.poetry]
+name = "gtrending"
+version = "0.5.0"
+description = "Trending repositories and developers on GitHu"
+authors = ["hedy <hedy@tilde.cafe>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+requests = "^2.31.0"
+beautifulsoup4 = "^4.12.2"
+
+[tool.poetry.scripts]
+gtrending = "gtrending.cli:main"
+
+[tool.poetry.group.dev.dependencies]
+mypy = "^1.3.0"
+pytest = "^7.3.2"
+black = "^23.3.0"
+codespell = "^2.2.4"
+Sphinx = "^7.0.0"
+furo = "^2023.5.20"
+sphinx-copybutton = "^0.5.2"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
