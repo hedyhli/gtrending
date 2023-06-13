@@ -21,7 +21,7 @@ from .paramutils import (
     convert_language_name_to_param,
 )
 
-__version__ = "0.5.0"
+__version__ = "0.5.1"
 __url__ = "https://github.com/hedyhli/gtrending"
 __author__ = "hedyhli"
 __author_email__ = "hedy@tilde.cafe"

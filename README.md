@@ -131,6 +131,8 @@ Parameters:
 * `language (str, optional)`: The programming language, eg: python
 * `since (str, optional)`: The time range, choose from [daily, weekly,
   monthly]. Defaults to "daily"
+* `sponsorable (bool, optional)`: Whether to only search for developers with sponsor URLs.
+  Defaults to False.
 
 Example:
 ```python-console
@@ -144,7 +146,8 @@ Example:
                      'that allows developers to express policies such as '
                      'Backoff, Retry, Circuit Breaker, Tim…',
       'name': 'cockatiel',
-      'url': 'https://github.com/connor4312/cockatiel'
+      'url': 'https://github.com/connor4312/cockatiel',
+      'descriptionUrl': ''
     },
     'sponsorUrl': None,
     'url': 'https://github.com/connor4312',
@@ -156,7 +159,8 @@ Example:
     'repo': {
       'description': 'End-to-end typesafe APIs in Nuxt applications.',
       'name': 'trpc-nuxt',
-      'url': 'https://github.com/wobsoriano/trpc-nuxt'
+      'url': 'https://github.com/wobsoriano/trpc-nuxt',
+      'descriptionUrl': 'http://trpc-nuxt.vercel.app/'
     },
     'sponsorUrl': None,
     'url': 'https://github.com/wobsoriano',
@@ -335,6 +339,5 @@ gtrending developers -j | jq '[ map(select(.sponsorUrl != null)) | .[] | {userna
 
 ## Uses
 
-* [github-trending-api](https://github.com/huchenme/github-trending-api) —
-  JavaScript library with web API
 * requests — Making API requests
+* BeautifulSoup - Scraping github.com/trending

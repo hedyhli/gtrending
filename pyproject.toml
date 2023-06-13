@@ -1,10 +1,28 @@
 [tool.poetry]
 name = "gtrending"
-version = "0.5.0"
+version = "0.5.1"
 description = "Trending repositories and developers on GitHu"
 authors = ["hedy <hedy@tilde.cafe>"]
 license = "MIT"
 readme = "README.md"
+documentation = "https://gtrending.readthedocs.io/en/latest/"
+repository = "https://github.com/hedyhli/gtrending"
+keywords = ["github", "github-trending"]
+classifiers = [
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Typing :: Typed",
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "Operating System :: Microsoft :: Windows",
+    "Operating System :: MacOS",
+    "Operating System :: POSIX :: Linux",
+]
 
 [tool.poetry.dependencies]
 python = "^3.8"

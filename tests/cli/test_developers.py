@@ -27,3 +27,8 @@ def test_language(run_cli, developer_assertion, lang):
 def test_since(run_cli, developer_assertion, since):
     output = json.loads(run_cli(f"developers -j --since {since}"))
     developer_assertion(output)
+
+
+def test_sponsorable(run_cli, developer_assertion):
+    output = json.loads(run_cli("developers -j --sponsorable"))
+    developer_assertion(output, sponsorable=True)
