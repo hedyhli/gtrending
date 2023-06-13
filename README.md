@@ -35,9 +35,8 @@ trending today.
 
 ## Requirements
 
-* Python 3.6 or higher
-
-The only python package dependency is requests.
+* Python **3.8** or higher
+* Dependencies: requests and beautifulsoup
 
 
 ## Installation
@@ -53,6 +52,11 @@ pip3 install gtrending
 Poetry:
 ```
 poetry add gtrending
+```
+
+Pipx (to use gtrending CLI):
+```
+pipx install gtrending
 ```
 
 You get the idea.

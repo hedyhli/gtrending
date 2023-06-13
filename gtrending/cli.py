@@ -99,8 +99,11 @@ def main(args=None):
         parents=[parent_json, parent_filter],
     )
     parser_developer.add_argument(
-        "--sponsorable", dest="sponsorable", action="store_true", default=False,
-        help="Filter for developers with sponsor URLs"
+        "--sponsorable",
+        dest="sponsorable",
+        action="store_true",
+        default=False,
+        help="Filter for developers with sponsor URLs",
     )
     parser_developer.set_defaults(func=show_developers)
 
@@ -126,7 +129,9 @@ def main(args=None):
 
 
 def show_developers(args: argparse.Namespace):
-    developers = fetch_developers(language=args.language, since=args.since, sponsorable=args.sponsorable)
+    developers = fetch_developers(
+        language=args.language, since=args.since, sponsorable=args.sponsorable
+    )
 
     developers.sort(key=lambda dev: dev["username"])
 
