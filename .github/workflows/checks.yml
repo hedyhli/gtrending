@@ -34,14 +34,14 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          python3 -m pip install -r requirements.txt
-          python3 -m pip install -r requirements_dev.txt
+          pip install -r requirements.txt
+          pip install -r requirements_dev.txt
       - name: Typecheck with mypy
         run: |
           make typecheck
       - name: Test with pytest
         run: |
-          python3 -m pip install .
+          pip install --no-build-isolation .
           make test
       - name: Upload code coverage
         uses: codecov/codecov-action@v1.0.10
