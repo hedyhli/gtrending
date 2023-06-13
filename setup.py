@@ -34,6 +34,7 @@ setup(
     include_package_data=True,
     install_requires=[
         "requests>=2.22.0,<3.0.0",
+        "beautifulsoup4>=4.11.1,<5.0.0",
     ],
     entry_points={"console_scripts": ["gtrending=gtrending.cli:main"]},
 )
