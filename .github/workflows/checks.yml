@@ -45,7 +45,7 @@ jobs:
       - run: source $VENV && make fmt-check || true
       - uses: codespell-project/actions-codespell@master
         with:
-          skip: "_build,.mypy_cache,*.json,.venv,build"
+          skip: "_build,.mypy_cache,*.json,.venv,build,.git"
 
       - name: Typecheck with mypy
         run: |
