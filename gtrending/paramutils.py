@@ -1,7 +1,7 @@
 """Parameter utility functions"""
 
 from urllib.parse import unquote as urlunquote
-from typing import List
+from typing import List, Any
 import json
 import importlib.resources as pkg_resources
 
@@ -44,6 +44,7 @@ def languages_list() -> List[dict]:
         list(dict): A list of dictionaries containing languages, mapping the param value to its name
     """
     # https://stackoverflow.com/a/20885799  for Python >=3.7
+    f: Any = None
     try:
         file = pkg_resources.files(_data) / "languages.json"
         f = file.open()
@@ -87,6 +88,7 @@ def spoken_languages_list() -> List[dict]:
     Returns:
         list(dict): A list dictionaries of spoken languages, mapping the code to the name
     """
+    f: Any = None
     try:
         file = pkg_resources.files(_data) / "spoken_languages.json"
         f = file.open()

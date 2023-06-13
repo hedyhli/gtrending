@@ -30,7 +30,7 @@ def scrape_repos(
     page = requests.get(url)
     soup = BeautifulSoup(page.text, "html.parser")
 
-    repos = []
+    repos: T.List[dict] = []
 
     for article in soup.find_all("article"):
         repos.append({})
@@ -99,7 +99,7 @@ def scrape_repos(
 def scrape_developers(
     quoted_language: T.Optional[str] = None,
     quoted_since: T.Optional[str] = None,
-    sponsorable: bool = False,
+    sponsorable: T.Optional[bool] = False,
 ) -> T.List[dict]:
     """Scrape GitHub Trending to find developers"""
 
@@ -115,7 +115,7 @@ def scrape_developers(
     page = requests.get(url)
     soup = BeautifulSoup(page.text, "html.parser")
 
-    devs = []
+    devs: T.List[dict] = []
     for article in soup.find_all("article", id=re.compile("^pa-")):
         devs.append({})
         avatar = article.find("div").find("img")
