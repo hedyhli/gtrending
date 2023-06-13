@@ -27,6 +27,8 @@ All parameters are case-insensitive.
 
 - **Spoken language**: ``spoken_language_code`` (str), eg: "en", "es".
 
+  Only applicable to ``fetch_repos()``.
+
   This specifies the primary spoken language of the trending repository, or of
   the trending developer's repository.
 
@@ -36,6 +38,12 @@ All parameters are case-insensitive.
   parameter affects the ``currentPeriodStars`` value of the resulting list of
   dictionaries returned. See the documentation page of :doc:`fetch_repos()
   function <repo>` for details.
+
+- **Sponsorable**: ``sponsorable`` (bool), eg: True.
+
+  Only applicable to ``fetch_developers()``.
+
+  Whether to only include developers with sponsor URLs. Defaults to False.
 
 
 Helper functions for the validation of these parameters are available in the
@@ -74,3 +82,4 @@ And here are the keys for developers::
         name             str
         description      str
         url              str
+        descriptionUrl   str

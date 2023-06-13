@@ -110,6 +110,7 @@ def fetch_developers(
         since (str, optional): The time range, choose from [daily, weekly, monthly].
                                Defaults to "daily".
         sponsorable (bool, optional): Whether to only search for developers with sponsor URLs.
+                                      Defaults to False.
 
     Returns:
         list(dict): A list of dictionaries containing information for each trending developer found
