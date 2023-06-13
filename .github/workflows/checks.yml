@@ -16,17 +16,17 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3.5.2
-      - name: Install and configure Poetry
-        uses: snok/install-poetry@v1.3.3
-        with:
-          version: 1.4.2
-          virtualenvs-in-project: true
-
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v4.6.0
         with:
           python-version: ${{ matrix.python-version }}
           architecture: x64
+
+      - name: Install and configure Poetry
+        uses: snok/install-poetry@v1.3.3
+        with:
+          version: 1.4.2
+          virtualenvs-in-project: true
 
       - name: Load cached venv
         id: cached-poetry-dependencies
@@ -45,7 +45,7 @@ jobs:
       - run: source $VENV && make fmt-check || true
       - uses: codespell-project/actions-codespell@master
         with:
-          skip: "_build,.mypy_cache,*.json"
+          skip: "_build,.mypy_cache,*.json,.venv,build"
 
       - name: Typecheck with mypy
         run: |
