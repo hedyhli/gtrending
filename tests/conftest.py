@@ -27,7 +27,7 @@ def repos_basic_assertions(repos, language=""):
                 assert repo["languageColor"].startswith("#")
 
 
-def developers_basic_assertions(devs):
+def developers_basic_assertions(devs, sponsorable=False):
     for developer in devs:
         assert isinstance(developer["username"], str)
         assert isinstance(developer["name"], str)
@@ -43,6 +43,8 @@ def developers_basic_assertions(devs):
                 repo["url"]
                 == "https://github.com/" + developer["username"] + "/" + repo["name"]
             )
+        if sponsorable:
+            assert developer['sponsorUrl']
 
 
 @pytest.fixture

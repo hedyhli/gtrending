@@ -5,14 +5,13 @@ Fetch trending repositories and developers using github-trending-api
 from urllib.parse import quote as urlquote
 from typing import List, Optional
 
-import requests
-
 from .paramutils import (
     check_language,
     check_spoken_language_code,
     check_since,
     convert_language_name_to_param,
 )
+from .scrape import scrape_repos, scrape_developers
 
 
 def fetch_repos(
@@ -75,15 +74,10 @@ def fetch_repos(
         )
     since = since or "daily"
 
-    url: str = (
-        "https://gtrend.yapie.me/repositories?"
-        f"language={language_param}&since={since}&spoken_language_code={spoken_language_code}"
-    )
-
-    res = requests.get(url).json()
+    res = scrape_repos(language_param, spoken_language_code, since)
     repos = []
     for repo in res:
-        repo["fullname"] = f"{repo['author']}/{repo['name']}"
+        # repo["fullname"] = f"{repo['author']}/{repo['name']}"
         repo_language = repo.get("language")
         # Edge cases
         if language:
@@ -105,7 +99,7 @@ def fetch_repos(
 
 
 def fetch_developers(
-    language: Optional[str] = "", since: Optional[str] = "daily"
+    language: Optional[str] = "", since: Optional[str] = "daily", sponsorable: Optional[bool] = False
 ) -> List[dict]:
     """Fetch trending developers on GitHub.
 
@@ -113,6 +107,7 @@ def fetch_developers(
         language (str, optional): The programming language, eg: python
         since (str, optional): The time range, choose from [daily, weekly, monthly].
                                Defaults to "daily".
+        sponsorable (bool, optional): Whether to only search for developers with sponsor URLs.
 
     Returns:
         list(dict): A list of dictionaries containing information for each trending developer found
@@ -126,6 +121,7 @@ def fetch_developers(
             fetch_developers()
             fetch_repos(language="python")
             fetch_repos("C", since="monthly")
+            fetch_repos("python", sponsorable=True)
     """
 
     if (
@@ -141,9 +137,10 @@ def fetch_developers(
             f"Invalid since argument (must be 'daily', 'weekly' or 'monthly'): {since}"
         )
 
-    url: str = (
-        f"https://gtrend.yapie.me/developers?language={language_param}&since={since}"
-    )
+    if not isinstance(sponsorable, (bool, type(None))):
+        raise ValueError(
+            f"Invalid sponsorable argument (must be True/False/None): {sponsorable}"
+        )
 
-    res = requests.get(url).json()
+    res = scrape_developers(language_param, since, sponsorable)
     return res

@@ -2,12 +2,14 @@
 
 from urllib.parse import unquote as urlunquote
 from typing import List
+import json
+import importlib.resources as pkg_resources
 
-import requests
+from . import _data
 
 
-"""Tuple of valid arguments for the `since` parameter"""
 SINCE_PARAM = ("daily", "weekly", "monthly")
+"""Tuple of valid arguments for the `since` parameter"""
 
 
 def languages_list() -> List[dict]:
@@ -41,20 +43,15 @@ def languages_list() -> List[dict]:
     Returns:
         list(dict): A list of dictionaries containing languages, mapping the param value to its name
     """
-    url: str = "https://gtrend.yapie.me/languages"
-    response = requests.get(url).json()
-
-    # Rename key urlParam to param
-    for i in response:
-        # https://stackoverflow.com/questions/54637847/how-to-change-dictionary-keys-in-a-list-of-dictionaries
-        i["param"] = urlunquote(i.pop("urlParam"))
-        # urlParam values returned by API shows values that should be used as
-        # url query values, these are converted to %-decoded values for use as
-        # a python library.
-        #
-        # (For check_language()):
-
-    return response
+    # https://stackoverflow.com/a/20885799  for Python >=3.7
+    try:
+        file = (pkg_resources.files(_data) / 'languages.json')
+        f = file.open()
+    except AttributeError:
+        f = pkg_resources.open_text(_data, 'languages.json')
+    res = json.load(f)
+    f.close()
+    return res
 
 
 def spoken_languages_list() -> List[dict]:
@@ -90,16 +87,14 @@ def spoken_languages_list() -> List[dict]:
     Returns:
         list(dict): A list dictionaries of spoken languages, mapping the code to the name
     """
-    url: str = "https://gtrend.yapie.me/spoken_languages"
-    response = requests.get(url).json()
-
-    # Rename key urlParam to code
-    for i in response:
-        # https://stackoverflow.com/questions/54637847/how-to-change-dictionary-keys-in-a-list-of-dictionaries
-        i["code"] = i.pop("urlParam")
-        i["name"] = i["name"].split(", ")
-
-    return response
+    try:
+        file = (pkg_resources.files(_data) / 'spoken_languages.json')
+        f = file.open()
+    except AttributeError:
+        f = pkg_resources.open_text(_data, 'spoken_languages.json')
+    res = json.load(f)
+    f.close()
+    return res
 
 
 def check_language(language: str) -> bool:
