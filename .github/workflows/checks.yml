@@ -24,7 +24,7 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install pylint pytest black codespell
-          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+          pip install -r requirements.txt
       - name: GitHub Action for pylint
         uses: cclauss/GitHub-Action-for-pylint@0.7.0
       - run: make fmt-check || true
@@ -42,6 +42,7 @@ jobs:
       - name: Test with pytest
         run: |
           pip install .
+          pip install -r requirements.txt
           make test
       - name: Upload code coverage
         uses: codecov/codecov-action@v1.0.10
