@@ -30,7 +30,7 @@ jobs:
       - run: make fmt-check || true
       - uses: codespell-project/actions-codespell@master
         with:
-          skip: "_build,.mypy_cache"
+          skip: "_build,.mypy_cache,*.json"
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
