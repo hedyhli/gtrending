@@ -2,16 +2,16 @@
 Fetch trending repositories and developers using github-trending-api
 """
 
-from urllib.parse import quote as urlquote
 from typing import List, Optional
+from urllib.parse import quote as urlquote
 
 from .paramutils import (
     check_language,
-    check_spoken_language_code,
     check_since,
+    check_spoken_language_code,
     convert_language_name_to_param,
 )
-from .scrape import scrape_repos, scrape_developers
+from .scrape import scrape_developers, scrape_repos
 
 
 def fetch_repos(
@@ -37,7 +37,8 @@ def fetch_repos(
         convert_language_name_to_param().
 
     Returns:
-        list(dict): A list of dictionaries containing information for each trending repository found
+        list(dict): A list of dictionaries containing information for each trending
+                    repository found
 
     Raises:
         ValueError: When any of the arguments are invalid
@@ -109,11 +110,12 @@ def fetch_developers(
         language (str, optional): The programming language, eg: python
         since (str, optional): The time range, choose from [daily, weekly, monthly].
                                Defaults to "daily".
-        sponsorable (bool, optional): Whether to only search for developers with sponsor URLs.
-                                      Defaults to False.
+        sponsorable (bool, optional): Whether to only search for developers with
+                                      sponsor URLs. Defaults to False.
 
     Returns:
-        list(dict): A list of dictionaries containing information for each trending developer found
+        list(dict): A list of dictionaries containing information for each trending
+                    developer found
 
     Raises:
         ValueError: When any of the arguments are invalid

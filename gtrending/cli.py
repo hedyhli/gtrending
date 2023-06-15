@@ -2,12 +2,11 @@
 
 import argparse
 import json
-
-from typing import Dict, Any
+from typing import Any, Dict
 
 from .fetch import (
-    fetch_repos,
     fetch_developers,
+    fetch_repos,
 )
 from .paramutils import (
     languages_list,
@@ -120,7 +119,7 @@ def main(args=None):
     parser_spoken_langs.set_defaults(func=show_spoken_langs)
 
     args = parser.parse_args(args)
-    if args.command == None:
+    if args.command is None:
         parser.print_help()
         exit(1)
     else:

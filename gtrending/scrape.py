@@ -1,10 +1,10 @@
 """Scraper"""
 
-import typing as T
 import re
+import typing as T
 
-from bs4 import BeautifulSoup
 import requests
+from bs4 import BeautifulSoup
 
 GHTRENDING_URL = "https://github.com/trending/"
 

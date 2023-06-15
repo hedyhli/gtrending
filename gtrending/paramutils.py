@@ -1,12 +1,10 @@
 """Parameter utility functions"""
 
-from urllib.parse import unquote as urlunquote
-from typing import List
-import json
 import importlib.resources as pkg_resources
+import json
+from typing import List
 
 from . import _data
-
 
 SINCE_PARAM = ("daily", "weekly", "monthly")
 """Tuple of valid arguments for the `since` parameter"""
@@ -41,7 +39,8 @@ def languages_list() -> List[dict]:
             ]
 
     Returns:
-        list(dict): A list of dictionaries containing languages, mapping the param value to its name
+        list(dict): A list of dictionaries containing languages, mapping the param
+                    value to its name.
     """
     # https://stackoverflow.com/a/20885799  for Python >=3.7
     try:
@@ -85,7 +84,8 @@ def spoken_languages_list() -> List[dict]:
             ]
 
     Returns:
-        list(dict): A list dictionaries of spoken languages, mapping the code to the name
+        list(dict): A list dictionaries of spoken languages, mapping the code to the
+                    name.
     """
     try:
         file = pkg_resources.files(_data) / "spoken_languages.json"  # type: ignore
